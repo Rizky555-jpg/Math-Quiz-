@@ -155,6 +155,11 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* ===== HOME PANEL ===== */
+        #homePanel {
+            display: block;
+        }
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -220,6 +225,65 @@
             50% { box-shadow: 0 4px 40px rgba(245,87,108,0.6); }
         }
 
+        /* ===== WELCOME SECTION ===== */
+        .welcome-section {
+            text-align: center;
+            padding: 16px 0 8px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.6rem;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            margin-bottom: 4px;
+        }
+
+        .welcome-title .highlight {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .welcome-subtitle .emoji-wave {
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .welcome-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            margin: 12px auto 16px;
+            border-radius: 10px;
+        }
+
+        /* ===== MODE SELECTOR ===== */
         .mode-selector {
             display: flex;
             gap: 10px;
@@ -262,6 +326,7 @@
             box-shadow: 0 8px 30px rgba(245,87,108,0.3);
         }
 
+        /* ===== SETTINGS ===== */
         .settings-row {
             display: flex;
             gap: 16px;
@@ -328,7 +393,6 @@
             font-weight: 600;
         }
 
-        /* Hilangkan tombol panah di input number */
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -338,6 +402,7 @@
             -moz-appearance: textfield;
         }
 
+        /* ===== START BUTTON ===== */
         .start-area {
             text-align: center;
             margin: 6px 0 4px;
@@ -399,14 +464,67 @@
             pointer-events: none;
         }
 
+        /* ===== QUIZ PANEL ===== */
         .quiz-panel {
             margin-top: 12px;
             animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none;
+        }
+
+        .quiz-panel.active {
+            display: block;
         }
 
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(40px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .quiz-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-nav:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .btn-nav.home-btn {
+            border-color: rgba(79,172,254,0.3);
+            color: #4facfe;
+        }
+
+        .btn-nav.home-btn:hover {
+            background: rgba(79,172,254,0.15);
+            border-color: #4facfe;
+        }
+
+        .btn-nav.restart-btn {
+            border-color: rgba(245,87,108,0.3);
+            color: #f5576c;
+        }
+
+        .btn-nav.restart-btn:hover {
+            background: rgba(245,87,108,0.15);
+            border-color: #f5576c;
         }
 
         .progress-wrap {
@@ -670,8 +788,14 @@
             margin-right: 10px;
         }
 
+        /* ===== RESULT PANEL ===== */
         .result-panel {
             animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none;
+        }
+
+        .result-panel.active {
+            display: block;
         }
 
         .result-summary {
@@ -884,6 +1008,12 @@
                 font-size: 1.6rem;
                 padding: 8px 10px;
             }
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            .welcome-subtitle {
+                font-size: 0.9rem;
+            }
             .mode-selector {
                 flex-direction: column;
                 gap: 6px;
@@ -926,9 +1056,19 @@
                 font-size: 1.1rem;
                 padding: 16px 30px;
             }
+            .quiz-nav {
+                gap: 8px;
+            }
+            .btn-nav {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
         }
 
         @media (max-width: 400px) {
+            .welcome-title {
+                font-size: 1.4rem;
+            }
             .question-text {
                 font-size: 1.6rem;
             }
@@ -950,41 +1090,56 @@
     </div>
 
     <div class="container" id="app">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <div class="logo-icon">🧮</div>
-                <div class="logo-text">
-                    Math Quiz Pro
-                    <span>✨ perkalian & pembagian 1-9</span>
+        <!-- ===== HOME PANEL ===== -->
+        <div id="homePanel">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">🧮</div>
+                    <div class="logo-text">
+                        Math Quiz Pro
+                        <span>✨ perkalian & pembagian 1-9</span>
+                    </div>
+                </div>
+                <div class="badge">⚡ 100 soal</div>
+            </div>
+
+            <!-- ===== WELCOME SECTION ===== -->
+            <div class="welcome-section">
+                <div class="welcome-title">
+                    👋 Selamat Datang di <span class="highlight">Math Quiz Pro</span>
+                </div>
+                <div class="welcome-subtitle">
+                    <span class="emoji-wave">👋</span> Siap berlatih? Pilih mode & waktu, lalu mulai!
+                </div>
+                <div class="welcome-divider"></div>
+            </div>
+
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="multiply" id="modeMultiply">✖️ Perkalian</button>
+                <button class="mode-btn" data-mode="divide" id="modeDivide">➗ Pembagian</button>
+            </div>
+
+            <div class="settings-row">
+                <span class="settings-label">⏱️ Waktu</span>
+                <div class="custom-time-wrapper">
+                    <label>🎯</label>
+                    <input type="number" class="custom-time-input" id="customTimeInput" placeholder="4" min="0.5" max="60" step="0.5" value="4">
+                    <span class="custom-time-unit">menit</span>
                 </div>
             </div>
-            <div class="badge">⚡ 100 soal</div>
-        </div>
 
-        <!-- Mode Selector -->
-        <div class="mode-selector">
-            <button class="mode-btn active" data-mode="multiply" id="modeMultiply">✖️ Perkalian</button>
-            <button class="mode-btn" data-mode="divide" id="modeDivide">➗ Pembagian</button>
-        </div>
-
-        <!-- Settings Row - HANYA CUSTOM INPUT -->
-        <div class="settings-row">
-            <span class="settings-label">⏱️ Waktu</span>
-            <div class="custom-time-wrapper">
-                <label>🎯</label>
-                <input type="number" class="custom-time-input" id="customTimeInput" placeholder="4" min="0.5" max="60" step="0.5" value="4">
-                <span class="custom-time-unit">menit</span>
+            <div class="start-area">
+                <button class="btn-start" id="startBtn">🚀 Mulai 100 Soal</button>
             </div>
         </div>
 
-        <!-- Start Button -->
-        <div class="start-area">
-            <button class="btn-start" id="startBtn">🚀 Mulai 100 Soal</button>
-        </div>
+        <!-- ===== QUIZ PANEL ===== -->
+        <div class="quiz-panel" id="quizPanel">
+            <div class="quiz-nav">
+                <button class="btn-nav home-btn" id="goHomeBtn">🏠 Home</button>
+                <button class="btn-nav restart-btn" id="restartQuizBtn">🔄 Ulang</button>
+            </div>
 
-        <!-- Quiz Panel -->
-        <div class="quiz-panel hidden" id="quizPanel">
             <div class="progress-wrap">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -1003,8 +1158,8 @@
             <div class="feedback-area" id="feedbackArea">💡 Pilih jawabanmu</div>
         </div>
 
-        <!-- Result Panel -->
-        <div class="result-panel hidden" id="resultPanel">
+        <!-- ===== RESULT PANEL ===== -->
+        <div class="result-panel" id="resultPanel">
             <div class="result-summary">
                 <div class="result-title">🏁 Selesai!</div>
                 <div class="result-subtitle">✨ Lihat hasil perjuanganmu</div>
@@ -1032,7 +1187,8 @@
                 </div>
                 <div class="result-actions">
                     <button class="btn-secondary" id="reviewToggle">📋 Review Jawaban</button>
-                    <button class="btn-primary" id="resetBtn">🔄 Kerjakan Lagi</button>
+                    <button class="btn-secondary home-btn" id="resultHomeBtn">🏠 Home</button>
+                    <button class="btn-primary" id="resultRestartBtn">🔄 Kerjakan Lagi</button>
                 </div>
                 <div id="reviewContainer" class="review-section hidden"></div>
             </div>
@@ -1053,11 +1209,19 @@
             let isAnswered = false;
             let reviewData = [];
 
+            // DOM
+            const homePanel = document.getElementById('homePanel');
+            const quizPanel = document.getElementById('quizPanel');
+            const resultPanel = document.getElementById('resultPanel');
+
             const modeMultiplyBtn = document.getElementById('modeMultiply');
             const modeDivideBtn = document.getElementById('modeDivide');
             const startBtn = document.getElementById('startBtn');
-            const quizPanel = document.getElementById('quizPanel');
-            const resultPanel = document.getElementById('resultPanel');
+            const goHomeBtn = document.getElementById('goHomeBtn');
+            const restartQuizBtn = document.getElementById('restartQuizBtn');
+            const resultHomeBtn = document.getElementById('resultHomeBtn');
+            const resultRestartBtn = document.getElementById('resultRestartBtn');
+
             const progressFill = document.getElementById('progressFill');
             const timerFill = document.getElementById('timerFill');
             const timerLabel = document.getElementById('timerLabel');
@@ -1065,11 +1229,43 @@
             const questionText = document.getElementById('questionText');
             const optionsContainer = document.getElementById('optionsContainer');
             const feedbackArea = document.getElementById('feedbackArea');
-            const resetBtn = document.getElementById('resetBtn');
             const reviewToggle = document.getElementById('reviewToggle');
             const reviewContainer = document.getElementById('reviewContainer');
             const customTimeInput = document.getElementById('customTimeInput');
 
+            // ===== NAVIGATION =====
+            function showHome() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isActive = false;
+                homePanel.style.display = 'block';
+                quizPanel.classList.remove('active');
+                quizPanel.style.display = 'none';
+                resultPanel.classList.remove('active');
+                resultPanel.style.display = 'none';
+                startBtn.disabled = false;
+                startBtn.textContent = '🚀 Mulai 100 Soal';
+            }
+
+            function showQuiz() {
+                homePanel.style.display = 'none';
+                quizPanel.style.display = 'block';
+                quizPanel.classList.add('active');
+                resultPanel.classList.remove('active');
+                resultPanel.style.display = 'none';
+            }
+
+            function showResult() {
+                homePanel.style.display = 'none';
+                quizPanel.classList.remove('active');
+                quizPanel.style.display = 'none';
+                resultPanel.style.display = 'block';
+                resultPanel.classList.add('active');
+            }
+
+            // ===== HELPERS =====
             function shuffleArray(arr) {
                 for (let i = arr.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -1263,8 +1459,7 @@
                 });
                 score.empty = emptyCount;
 
-                quizPanel.classList.add('hidden');
-                resultPanel.classList.remove('hidden');
+                showResult();
 
                 document.getElementById('resBenar').textContent = score.correct;
                 document.getElementById('resSalah').textContent = score.wrong;
@@ -1302,7 +1497,7 @@
                 reviewContainer.classList.add('hidden');
             }
 
-            function resetQuiz() {
+            function resetQuizState() {
                 if (timerInterval) {
                     clearInterval(timerInterval);
                     timerInterval = null;
@@ -1318,27 +1513,24 @@
                 score = { correct: 0, wrong: 0, empty: 0 };
                 reviewData = [];
                 currentIndex = 0;
-                resultPanel.classList.add('hidden');
-                quizPanel.classList.add('hidden');
-                startBtn.disabled = false;
-                startBtn.textContent = '🚀 Mulai 100 Soal';
                 optionsContainer.innerHTML = '';
                 feedbackArea.textContent = '💡 Pilih jawabanmu';
                 feedbackArea.className = 'feedback-area';
                 progressFill.style.width = '0%';
+                startBtn.disabled = false;
+                startBtn.textContent = '🚀 Mulai 100 Soal';
             }
 
             function startQuiz() {
-                // Ambil waktu dari input custom
                 const val = parseFloat(customTimeInput.value);
                 if (!isNaN(val) && val > 0) {
                     timeLimit = Math.round(val * 60);
                 } else {
-                    timeLimit = 240; // default 4 menit
+                    timeLimit = 240;
                     customTimeInput.value = '4';
                 }
 
-                resetQuiz();
+                resetQuizState();
                 questions = generateQuestions(mode);
                 while (questions.length < 100) {
                     const extra = generateQuestions(mode);
@@ -1357,8 +1549,7 @@
                 const secs = timeLimit % 60;
                 timerLabel.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
 
-                quizPanel.classList.remove('hidden');
-                resultPanel.classList.add('hidden');
+                showQuiz();
                 startBtn.disabled = true;
                 startBtn.textContent = '⏳ Sedang...';
 
@@ -1366,13 +1557,13 @@
                 startTimer();
             }
 
-            // Mode buttons
+            // ===== EVENT LISTENERS =====
             modeMultiplyBtn.addEventListener('click', function() {
                 if (isActive) return;
                 mode = 'multiply';
                 modeMultiplyBtn.classList.add('active');
                 modeDivideBtn.classList.remove('active');
-                resetQuiz();
+                resetQuizState();
             });
 
             modeDivideBtn.addEventListener('click', function() {
@@ -1380,18 +1571,47 @@
                 mode = 'divide';
                 modeDivideBtn.classList.add('active');
                 modeMultiplyBtn.classList.remove('active');
-                resetQuiz();
+                resetQuizState();
             });
 
             startBtn.addEventListener('click', startQuiz);
-            resetBtn.addEventListener('click', resetQuiz);
+
+            goHomeBtn.addEventListener('click', function() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isActive = false;
+                showHome();
+                resetQuizState();
+            });
+
+            resultHomeBtn.addEventListener('click', function() {
+                showHome();
+                resetQuizState();
+            });
+
+            restartQuizBtn.addEventListener('click', function() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isActive = false;
+                startQuiz();
+            });
+
+            resultRestartBtn.addEventListener('click', function() {
+                startQuiz();
+            });
+
             reviewToggle.addEventListener('click', function() {
                 reviewContainer.classList.toggle('hidden');
                 this.textContent = reviewContainer.classList.contains('hidden') ? '📋 Review Jawaban' : '📋 Sembunyikan';
             });
 
             modeMultiplyBtn.classList.add('active');
-            resetQuiz();
+            showHome();
+            resetQuizState();
         })();
     </script>
 </body>
