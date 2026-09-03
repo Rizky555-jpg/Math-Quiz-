@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Math Quiz Pro</title>
+    <title>Math Quiz Pro • Full Version</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;800;900&display=swap');
 
@@ -16,7 +16,7 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,7 +25,6 @@
             overflow: hidden;
         }
 
-        /* Background bintang */
         body::before {
             content: '';
             position: fixed;
@@ -33,74 +32,58 @@
             height: 100%;
             top: 0;
             left: 0;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(2px 2px at 50px 160px, #ddd, transparent),
-                radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.6), transparent),
-                radial-gradient(2px 2px at 130px 80px, #fff, transparent),
-                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.7), transparent);
-            background-size: 200px 200px;
-            background-repeat: repeat;
-            opacity: 0.4;
-            animation: twinkle 4s ease-in-out infinite alternate;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(79, 172, 254, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(245, 87, 108, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(67, 233, 123, 0.05) 0%, transparent 50%);
             z-index: 0;
             pointer-events: none;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Floating shapes */
-        .floating-shapes {
+        .math-float {
             position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            font-size: 2rem;
+            opacity: 0.04;
+            font-weight: 900;
+            color: white;
             z-index: 0;
             pointer-events: none;
-            overflow: hidden;
+            animation: floatMath 30s infinite linear;
+        }
+        .math-float:nth-child(1) { top: 10%; left: 5%; animation-duration: 25s; }
+        .math-float:nth-child(2) { top: 20%; right: 8%; animation-duration: 30s; animation-delay: 5s; }
+        .math-float:nth-child(3) { bottom: 30%; left: 10%; animation-duration: 28s; animation-delay: 10s; }
+        .math-float:nth-child(4) { bottom: 20%; right: 5%; animation-duration: 32s; animation-delay: 3s; }
+        .math-float:nth-child(5) { top: 50%; left: 50%; animation-duration: 35s; animation-delay: 8s; }
+        .math-float:nth-child(6) { top: 5%; left: 50%; animation-duration: 27s; animation-delay: 2s; }
+        .math-float:nth-child(7) { bottom: 5%; left: 30%; animation-duration: 33s; animation-delay: 6s; }
+
+        @keyframes floatMath {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(50px, -30px) rotate(90deg) scale(1.2); }
+            50% { transform: translate(100px, 20px) rotate(180deg) scale(0.8); }
+            75% { transform: translate(50px, 50px) rotate(270deg) scale(1.1); }
+            100% { transform: translate(0, 0) rotate(360deg) scale(1); }
         }
 
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.06;
-            animation: floatUp 25s infinite linear;
-        }
-
-        .shape:nth-child(1) { width: 200px; height: 200px; background: #f093fb; left: 5%; animation-duration: 30s; }
-        .shape:nth-child(2) { width: 250px; height: 250px; background: #4facfe; right: 5%; animation-duration: 35s; animation-delay: 5s; }
-        .shape:nth-child(3) { width: 150px; height: 150px; background: #43e97b; left: 40%; animation-duration: 25s; animation-delay: 10s; }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
-            10% { opacity: 0.06; }
-            90% { opacity: 0.06; }
-            100% { transform: translateY(-100vh) rotate(720deg) scale(1); opacity: 0; }
-        }
-
-        /* ===== CONTAINER FULL SCREEN ===== */
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             height: 100vh;
-            max-height: 700px;
+            max-height: 750px;
             background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 0;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 32px;
             padding: 24px 28px 28px;
-            box-shadow: none;
-            border: none;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
             position: relative;
             z-index: 1;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            margin: 16px;
         }
 
         /* ===== HEADER ===== */
@@ -109,17 +92,17 @@
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .menu-btn {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.06);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 30px;
             color: rgba(255,255,255,0.7);
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
@@ -130,39 +113,78 @@
         .menu-btn:hover {
             background: rgba(255,255,255,0.1);
             color: white;
+            transform: translateY(-2px);
         }
 
         .logo-text {
             color: white;
             font-family: 'Fredoka One', cursive;
             font-weight: 400;
-            font-size: 1.3rem;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text .emoji-big {
+            font-size: 1.8rem;
+            animation: bounceLogo 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .logo-text span {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
-            font-size: 0.6rem;
-            opacity: 0.4;
+            font-size: 0.65rem;
+            opacity: 0.3;
             display: block;
-            margin-top: -4px;
             letter-spacing: 1px;
+        }
+
+        .user-badge {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .user-badge:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
         }
 
         .badge {
             background: linear-gradient(135deg, #f093fb, #f5576c);
-            padding: 4px 14px;
+            padding: 6px 18px;
             border-radius: 30px;
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 700;
             color: white;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 20px rgba(245,87,108,0.2);
+            box-shadow: 0 4px 25px rgba(245,87,108,0.25);
+            animation: pulseBadge 2s ease-in-out infinite;
         }
 
-        /* ===== SIDEBAR MENU ===== */
+        @keyframes pulseBadge {
+            0%, 100% { box-shadow: 0 4px 25px rgba(245,87,108,0.25); }
+            50% { box-shadow: 0 4px 45px rgba(245,87,108,0.5); }
+        }
+
+        /* ===== SIDEBAR ===== */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -174,25 +196,23 @@
             z-index: 999;
             display: none;
         }
-
         .menu-overlay.active { display: block; }
 
         .menu-sidebar {
             position: fixed;
             top: 0;
-            left: -300px;
-            width: 300px;
+            left: -320px;
+            width: 320px;
             max-width: 82vw;
             height: 100%;
-            background: rgba(15,12,41,0.96);
+            background: rgba(15,12,41,0.97);
             backdrop-filter: blur(30px);
             z-index: 1000;
-            padding: 28px 20px;
+            padding: 28px 22px;
             overflow-y: auto;
             transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             border-right: 1px solid rgba(255,255,255,0.04);
         }
-
         .menu-sidebar.active { left: 0; }
 
         .menu-sidebar::-webkit-scrollbar { width: 3px; }
@@ -207,7 +227,6 @@
             float: right;
             transition: all 0.3s;
         }
-
         .menu-close:hover { color: white; transform: rotate(90deg); }
 
         .menu-title {
@@ -217,7 +236,6 @@
             margin: 6px 0 16px;
             clear: both;
         }
-
         .menu-title .highlight {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             -webkit-background-clip: text;
@@ -225,7 +243,7 @@
         }
 
         .menu-section-title {
-            color: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.15);
             font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -236,32 +254,114 @@
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            border-radius: 14px;
+            gap: 14px;
+            padding: 11px 16px;
+            border-radius: 16px;
             background: transparent;
             border: none;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.5);
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s;
             width: 100%;
             text-align: left;
         }
+        .menu-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .menu-item.active { background: rgba(255,255,255,0.06); color: white; border-left: 3px solid #4facfe; }
+        .menu-item .emoji { font-size: 1.2rem; width: 28px; text-align: center; }
 
-        .menu-item:hover {
-            background: rgba(255,255,255,0.05);
-            color: white;
+        /* ===== LOGIN MODAL ===== */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-overlay.active { display: flex; }
+
+        .login-box {
+            background: rgba(20,17,50,0.95);
+            backdrop-filter: blur(30px);
+            border-radius: 32px;
+            padding: 40px 36px;
+            max-width: 420px;
+            width: 90%;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            animation: fadePage 0.4s ease;
         }
 
-        .menu-item.active {
+        .login-box h2 {
+            font-family: 'Fredoka One', cursive;
+            color: white;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .login-box .sub {
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            background: rgba(255,255,255,0.04);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.3s;
+            margin-bottom: 14px;
+        }
+
+        .login-box input:focus {
+            border-color: #4facfe;
             background: rgba(255,255,255,0.06);
-            color: white;
-            border-left: 3px solid #4facfe;
         }
 
-        .menu-item .emoji { font-size: 1.1rem; width: 26px; text-align: center; }
+        .login-box input::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245,87,108,0.3);
+        }
+
+        .login-error {
+            color: #f5576c;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 8px;
+            display: none;
+        }
 
         /* ===== PAGES ===== */
         .page {
@@ -272,7 +372,6 @@
             overflow-y: auto;
             padding-top: 4px;
         }
-
         .page.active { display: flex; }
 
         @keyframes fadePage {
@@ -285,14 +384,19 @@
 
         .page-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: white;
             flex-shrink: 0;
+        }
+        .page-title .grad {
+            background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .page-subtitle {
             color: rgba(255,255,255,0.3);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             flex-shrink: 0;
             margin-bottom: 6px;
         }
@@ -304,17 +408,360 @@
             flex: 1;
             overflow-y: auto;
         }
-
         .page-content strong { color: white; }
 
+        /* ===== HOME ===== */
+        .home-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: white;
+        }
+        .home-title .grad {
+            background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .home-subtitle {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+        .home-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #f093fb, #4facfe);
+            border-radius: 10px;
+            margin: 8px 0 12px;
+        }
+
+        .einstein-quote {
+            background: linear-gradient(135deg, rgba(240,147,251,0.06), rgba(79,172,254,0.06));
+            border-radius: 16px;
+            padding: 14px 20px;
+            border-left: 3px solid #f093fb;
+            margin: 6px 0 10px;
+        }
+        .einstein-quote .quote-text {
+            font-style: italic;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        .einstein-quote .quote-author {
+            display: block;
+            text-align: right;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-style: normal;
+        }
+
+        .fact-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(79, 172, 254, 0.04);
+            border-radius: 16px;
+            padding: 12px 16px;
+            border: 1px solid rgba(79, 172, 254, 0.04);
+            margin: 6px 0;
+        }
+        .fact-box .icon { font-size: 1.8rem; }
+        .fact-box .content { flex: 1; }
+        .fact-box .title { font-weight: 700; color: rgba(255,255,255,0.3); font-size: 0.6rem; text-transform: uppercase; display: block; }
+        .fact-box p { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1px; }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 8px 0;
+        }
+        .quick-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 14px 8px;
+            border-radius: 18px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .quick-btn:hover {
+            background: rgba(255,255,255,0.06);
+            color: white;
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .quick-btn .big { font-size: 1.8rem; display: block; margin-bottom: 2px; }
+
+        /* ===== LEADERBOARD ===== */
+        .leaderboard-tabs {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0 12px;
+            flex-shrink: 0;
+        }
+
+        .lb-tab {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.4);
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        .lb-tab:hover { background: rgba(255,255,255,0.06); color: white; }
+        .lb-tab.active {
+            background: linear-gradient(135deg, rgba(79,172,254,0.2), rgba(0,242,254,0.05));
+            border: 1px solid rgba(79,172,254,0.2);
+            color: #4facfe;
+        }
+
+        .lb-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .lb-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            transition: all 0.2s;
+        }
+        .lb-item:hover { background: rgba(255,255,255,0.03); }
+
+        .lb-item .rank {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            width: 32px;
+            text-align: center;
+            color: rgba(255,255,255,0.2);
+        }
+        .lb-item .rank.gold { color: #ffd700; }
+        .lb-item .rank.silver { color: #c0c0c0; }
+        .lb-item .rank.bronze { color: #cd7f32; }
+
+        .lb-item .info { flex: 1; }
+        .lb-item .info .name { color: white; font-weight: 700; font-size: 0.9rem; }
+        .lb-item .info .detail { color: rgba(255,255,255,0.25); font-size: 0.7rem; }
+
+        .lb-item .value {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .lb-item .value.grad1 { background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .lb-item .value.grad2 { background: linear-gradient(135deg, #4facfe, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .lb-item .value.grad3 { background: linear-gradient(135deg, #43e97b, #38f9d7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .lb-empty {
+            text-align: center;
+            color: rgba(255,255,255,0.15);
+            font-size: 0.9rem;
+            padding: 30px 0;
+        }
+
+        /* ===== BELAJAR GRID ===== */
+        .belajar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 8px 0;
+        }
+
+        .belajar-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 20px 14px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.04);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .belajar-card:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .belajar-card .belajar-icon { font-size: 2.4rem; display: block; margin-bottom: 6px; }
+        .belajar-card .belajar-title { color: white; font-weight: 800; font-size: 1rem; }
+        .belajar-card .belajar-desc { color: rgba(255,255,255,0.3); font-size: 0.7rem; margin: 4px 0 8px; }
+        .belajar-card .belajar-tag {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            background: rgba(79,172,254,0.1);
+            color: #4facfe;
+        }
+
+        /* ===== MATERI DETAIL ===== */
+        .materi-detail {
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin-top: 8px;
+            border: 1px solid rgba(255,255,255,0.03);
+            animation: fadePage 0.3s ease;
+        }
+        .materi-back {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+        .materi-back:hover { background: rgba(255,255,255,0.08); color: white; }
+
+        .materi-detail h3 {
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .materi-detail .materi-desc {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .materi-detail .materi-example {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-left: 3px solid #4facfe;
+        }
+        .materi-detail .materi-example .example-title {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .materi-detail .materi-example .example-content {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .materi-youtube {
+            margin-top: 12px;
+            background: rgba(255,0,0,0.04);
+            border-radius: 16px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .materi-youtube .yt-icon { font-size: 2rem; }
+        .materi-youtube .yt-info { flex: 1; }
+        .materi-youtube .yt-info .yt-label {
+            color: rgba(255,255,255,0.2);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .materi-youtube .yt-info .yt-title {
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .materi-youtube .yt-btn {
+            background: #ff0000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .materi-youtube .yt-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255,0,0,0.3);
+        }
+
+        /* ===== SUPPORTED BY DEEPSEEK AI ===== */
+        .supported-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.08), rgba(240, 147, 251, 0.08));
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border: 1px solid rgba(79, 172, 254, 0.08);
+            transition: all 0.3s;
+        }
+        .supported-box:hover {
+            transform: translateY(-2px);
+            border-color: rgba(79, 172, 254, 0.15);
+            box-shadow: 0 8px 30px rgba(79, 172, 254, 0.05);
+        }
+        .supported-box .supported-icon {
+            font-size: 2.8rem;
+            animation: pulseAI 2s ease-in-out infinite;
+        }
+        @keyframes pulseAI {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .supported-box .supported-content { flex: 1; }
+        .supported-box .supported-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        .supported-box .supported-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #4facfe, #43e97b, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradText 3s ease infinite;
+        }
+        @keyframes gradText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .supported-box .supported-desc {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        /* ===== HIGHLIGHT & CARD ===== */
         .highlight-box {
             background: rgba(255,255,255,0.03);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 14px 18px;
             margin: 8px 0;
             border-left: 3px solid #4facfe;
         }
-
         .highlight-box.gold { border-left-color: #f093fb; }
         .highlight-box.green { border-left-color: #43e97b; }
 
@@ -325,122 +772,77 @@
             margin: 8px 0;
             border: 1px solid rgba(255,255,255,0.03);
         }
-
         .math-card h4 { color: white; margin-bottom: 4px; font-size: 0.95rem; }
         .math-card p { color: rgba(255,255,255,0.55); font-size: 0.85rem; margin: 2px 0; }
 
-        /* ===== HOME ===== */
-        .home-title {
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.8rem;
-            color: white;
-        }
-
-        .home-title .highlight {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .home-subtitle {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
-            margin-top: 2px;
-        }
-
-        .home-divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            margin: 8px 0 12px;
-        }
-
-        .quick-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 8px 0;
-        }
-
-        .quick-btn {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.04);
-            padding: 14px 10px;
-            border-radius: 18px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .quick-btn:hover {
-            background: rgba(255,255,255,0.06);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .quick-btn .big { font-size: 1.6rem; display: block; margin-bottom: 2px; }
-
-        /* ===== QUIZ MODE SELECTOR ===== */
+        /* ===== MODE SELECTOR ===== */
         .mode-selector {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            background: rgba(0,0,0,0.2);
-            padding: 5px 8px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.03);
-            flex-shrink: 0;
-            margin-bottom: 6px;
-        }
-
-        .mode-btn {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.7rem;
-            background: transparent;
-            color: rgba(255,255,255,0.4);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .mode-btn:hover { color: rgba(255,255,255,0.7); }
-
-        .mode-btn.active {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            box-shadow: 0 4px 20px rgba(79,172,254,0.2);
-        }
-
-        .mode-btn.active::after { content: ' ✨'; }
-
-        .mode-btn:first-child.active {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            box-shadow: 0 4px 20px rgba(245,87,108,0.2);
-        }
-
-        /* ===== SETTINGS ===== */
-        .settings-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
             background: rgba(0,0,0,0.15);
-            padding: 8px 16px;
-            border-radius: 30px;
+            padding: 8px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.03);
             flex-shrink: 0;
             margin-bottom: 8px;
         }
 
+        .mode-btn {
+            padding: 12px 8px;
+            border: none;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.25s;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .mode-btn:hover {
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.7);
+            transform: translateY(-2px);
+        }
+        .mode-btn .icon { display: block; font-size: 1.6rem; margin-bottom: 2px; }
+        .mode-btn .label { display: block; font-size: 0.6rem; opacity: 0.5; }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, rgba(79,172,254,0.2), rgba(0,242,254,0.1));
+            border-color: #4facfe;
+            color: #4facfe;
+            box-shadow: 0 4px 25px rgba(79,172,254,0.15);
+        }
+        .mode-btn.active .label { opacity: 1; }
+
+        .mode-btn:first-child.active {
+            background: linear-gradient(135deg, rgba(245,87,108,0.2), rgba(240,147,251,0.1));
+            border-color: #f5576c;
+            color: #f5576c;
+            box-shadow: 0 4px 25px rgba(245,87,108,0.15);
+        }
+
+        /* ===== SETTINGS ===== */
+        .settings-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.12);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.03);
+            flex-shrink: 0;
+            margin-bottom: 8px;
+            justify-content: center;
+        }
+
         .settings-label {
             color: rgba(255,255,255,0.4);
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -448,41 +850,30 @@
         .time-wrap {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             background: rgba(255,255,255,0.04);
-            padding: 2px 10px 2px 14px;
+            padding: 4px 14px 4px 18px;
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.04);
         }
-
-        .time-wrap label { color: rgba(255,255,255,0.3); font-size: 0.7rem; }
-
+        .time-wrap label { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
         .time-input {
-            width: 60px;
-            padding: 4px 8px;
+            width: 65px;
+            padding: 6px 10px;
             border: none;
-            border-radius: 16px;
+            border-radius: 18px;
             background: rgba(255,255,255,0.06);
             color: white;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-align: center;
             outline: none;
         }
-
         .time-input:focus { background: rgba(255,255,255,0.1); }
-
-        .time-unit {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
+        .time-unit { color: rgba(255,255,255,0.3); font-size: 0.75rem; font-weight: 600; }
 
         input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
 
         .btn-start {
@@ -490,39 +881,45 @@
             background-size: 300% 300%;
             animation: gradShift 4s ease infinite;
             border: none;
-            padding: 12px 40px;
-            border-radius: 40px;
+            padding: 14px 50px;
+            border-radius: 50px;
             color: white;
             font-weight: 800;
-            font-size: 1rem;
-            box-shadow: 0 8px 30px rgba(245,87,108,0.2);
+            font-size: 1.1rem;
+            box-shadow: 0 8px 35px rgba(245,87,108,0.25);
             cursor: pointer;
             width: 100%;
-            max-width: 280px;
+            max-width: 300px;
             transition: all 0.3s;
             flex-shrink: 0;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
         }
-
         @keyframes gradShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
+        .btn-start::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.6s;
+        }
+        .btn-start:hover::before { left: 100%; }
         .btn-start:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(245,87,108,0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 45px rgba(245,87,108,0.35);
         }
-
-        .btn-start:disabled {
-            opacity: 0.4;
-            pointer-events: none;
-        }
-
+        .btn-start:disabled { opacity: 0.4; pointer-events: none; }
         .start-area { text-align: center; flex-shrink: 0; }
 
-        /* ===== QUIZ PANEL (di dalam page quiz) ===== */
+        /* ===== QUIZ PANEL ===== */
         .quiz-panel {
             display: none;
             flex: 1;
@@ -530,7 +927,6 @@
             animation: fadePage 0.4s ease;
             margin-top: 4px;
         }
-
         .quiz-panel.active { display: flex; }
 
         .quiz-nav {
@@ -540,11 +936,10 @@
             flex-shrink: 0;
             margin-bottom: 6px;
         }
-
         .btn-nav {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.04);
-            padding: 4px 14px;
+            padding: 5px 16px;
             border-radius: 20px;
             color: rgba(255,255,255,0.4);
             font-weight: 600;
@@ -552,7 +947,6 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .btn-nav:hover { background: rgba(255,255,255,0.08); color: white; }
         .btn-nav.home-btn { border-color: rgba(79,172,254,0.2); color: #4facfe; }
         .btn-nav.home-btn:hover { background: rgba(79,172,254,0.1); }
@@ -561,12 +955,11 @@
 
         .progress-wrap {
             background: rgba(0,0,0,0.25);
-            height: 5px;
+            height: 6px;
             border-radius: 20px;
             overflow: hidden;
             flex-shrink: 0;
         }
-
         .progress-fill {
             height: 100%;
             width: 0%;
@@ -576,7 +969,6 @@
             border-radius: 20px;
             transition: width 0.3s;
         }
-
         @keyframes progGrad {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -584,14 +976,13 @@
         }
 
         .timer-bar {
-            height: 3px;
+            height: 4px;
             background: rgba(0,0,0,0.2);
             border-radius: 10px;
             margin: 4px 0 8px;
             overflow: hidden;
             flex-shrink: 0;
         }
-
         .timer-fill {
             height: 100%;
             width: 100%;
@@ -599,17 +990,14 @@
             border-radius: 10px;
             transition: width 0.3s;
         }
-
         .timer-fill.warning {
             background: linear-gradient(90deg, #fa709a, #fee140);
             animation: pulseTim 0.8s ease-in-out infinite alternate;
         }
-
         .timer-fill.danger {
             background: linear-gradient(90deg, #f5576c, #ff6b6b);
             animation: pulseTim 0.4s ease-in-out infinite alternate;
         }
-
         @keyframes pulseTim {
             0% { opacity: 1; }
             100% { opacity: 0.5; }
@@ -618,20 +1006,19 @@
         .info-bar {
             display: flex;
             justify-content: space-between;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
             font-weight: 600;
             font-size: 0.75rem;
             flex-shrink: 0;
         }
-
-        .info-bar span { background: rgba(255,255,255,0.03); padding: 2px 12px; border-radius: 14px; }
+        .info-bar span { background: rgba(255,255,255,0.03); padding: 2px 14px; border-radius: 14px; }
 
         .q-text {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: white;
             text-align: center;
-            padding: 12px 8px;
+            padding: 14px 8px;
             background: rgba(255,255,255,0.02);
             border-radius: 24px;
             border: 1px solid rgba(255,255,255,0.02);
@@ -639,7 +1026,6 @@
             flex-shrink: 0;
             margin: 4px 0 8px;
         }
-
         .q-text .sub {
             font-family: 'Inter', sans-serif;
             display: block;
@@ -652,34 +1038,33 @@
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
             flex: 1;
             min-height: 0;
         }
-
         .opt-btn {
             background: rgba(255,255,255,0.03);
             border: 2px solid rgba(255,255,255,0.04);
-            padding: 12px 8px;
-            border-radius: 18px;
-            font-size: 1rem;
+            padding: 14px 10px;
+            border-radius: 20px;
+            font-size: 1.1rem;
             font-weight: 700;
             color: white;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s;
             text-align: center;
         }
-
         .opt-btn:hover:not(:disabled) {
             background: rgba(255,255,255,0.06);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.08);
         }
-
-        .opt-btn .let { opacity: 0.3; font-size: 0.6rem; margin-right: 6px; }
+        .opt-btn .let { opacity: 0.3; font-size: 0.65rem; margin-right: 8px; }
         .opt-btn.correct {
             background: linear-gradient(135deg, #43e97b, #38f9d7) !important;
             border-color: #43e97b !important;
             color: #0a2a1a !important;
+            transform: scale(1.03);
         }
         .opt-btn.wrong {
             background: linear-gradient(135deg, #f5576c, #ff6b6b) !important;
@@ -694,13 +1079,13 @@
         .opt-btn:disabled { cursor: default; opacity: 0.7; }
 
         .feedback-area {
-            padding: 8px 14px;
+            padding: 8px 16px;
             border-radius: 24px;
             font-weight: 700;
             font-size: 0.9rem;
             text-align: center;
             background: rgba(0,0,0,0.1);
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.3);
             min-height: 38px;
             display: flex;
             align-items: center;
@@ -708,7 +1093,6 @@
             flex-shrink: 0;
             margin-top: 6px;
         }
-
         .feedback-area.correct { background: rgba(67,233,123,0.08); color: #43e97b; border: 1px solid rgba(67,233,123,0.06); }
         .feedback-area.wrong { background: rgba(245,87,108,0.08); color: #f5576c; border: 1px solid rgba(245,87,108,0.06); }
 
@@ -719,7 +1103,6 @@
             flex-direction: column;
             animation: fadePage 0.4s ease;
         }
-
         .result-panel.active { display: flex; }
 
         .result-box {
@@ -731,37 +1114,33 @@
             display: flex;
             flex-direction: column;
         }
-
         .result-title {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: white;
             text-align: center;
         }
-
         .result-sub {
             color: rgba(255,255,255,0.2);
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
 
         .result-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin: 10px 0 12px;
         }
-
         .result-item {
             background: rgba(255,255,255,0.02);
-            border-radius: 16px;
-            padding: 10px 4px;
+            border-radius: 18px;
+            padding: 12px 4px;
             text-align: center;
         }
-
-        .result-item .icon { font-size: 1.2rem; display: block; }
+        .result-item .icon { font-size: 1.4rem; display: block; }
         .result-item .label { font-size: 0.55rem; text-transform: uppercase; color: rgba(255,255,255,0.2); }
-        .result-item .value { font-size: 1.6rem; font-weight: 900; color: white; }
+        .result-item .value { font-size: 1.8rem; font-weight: 900; color: white; }
         .result-item .value.green { color: #43e97b; }
         .result-item .value.red { color: #f5576c; }
         .result-item .value.gray { color: rgba(255,255,255,0.2); }
@@ -774,35 +1153,31 @@
             justify-content: center;
             margin-top: 6px;
         }
-
         .btn-sec {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.04);
-            padding: 8px 20px;
+            padding: 8px 22px;
             border-radius: 30px;
             font-weight: 700;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.8rem;
         }
-
         .btn-sec:hover { background: rgba(255,255,255,0.06); color: white; }
-
         .btn-pri {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             border: none;
-            padding: 8px 28px;
+            padding: 8px 30px;
             border-radius: 30px;
             font-weight: 800;
             color: white;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 0.85rem;
-            box-shadow: 0 4px 20px rgba(245,87,108,0.15);
+            box-shadow: 0 4px 25px rgba(245,87,108,0.15);
         }
-
-        .btn-pri:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,87,108,0.25); }
+        .btn-pri:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(245,87,108,0.25); }
 
         .review-section {
             margin-top: 10px;
@@ -811,60 +1186,117 @@
             border-top: 1px solid rgba(255,255,255,0.02);
             padding-top: 8px;
         }
-
         .review-item {
             display: flex;
             justify-content: space-between;
             padding: 3px 8px;
             border-bottom: 1px solid rgba(255,255,255,0.01);
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.35);
             font-size: 0.75rem;
         }
-
         .review-item .st { margin: 0 4px; }
         .review-item .ans { font-weight: 700; padding: 0 6px; border-radius: 10px; background: rgba(255,255,255,0.02); }
         .review-item .ans.correct { color: #43e97b; }
         .review-item .ans.wrong { color: #f5576c; }
-        .review-item .ans.empty { color: rgba(255,255,255,0.15); }
+        .review-item .ans.empty { color: rgba(255,255,255,0.1); }
 
         .hidden { display: none !important; }
 
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 8px 0 2px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            color: rgba(255,255,255,0.08);
+            font-size: 0.6rem;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            margin-top: 4px;
+        }
+        .footer span { opacity: 0.4; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 640px) {
-            .container { padding: 16px 14px 20px; max-height: 100vh; border-radius: 0; }
+            .container { padding: 16px 14px 20px; max-height: 100vh; border-radius: 20px; margin: 8px; }
             .logo-text { font-size: 1rem; }
-            .home-title { font-size: 1.3rem; }
-            .q-text { font-size: 1.5rem; padding: 8px 6px; }
+            .home-title { font-size: 1.4rem; }
+            .q-text { font-size: 1.5rem; padding: 10px 6px; }
             .options-grid { gap: 6px; }
             .opt-btn { padding: 10px 6px; font-size: 0.85rem; border-radius: 14px; }
-            .quick-grid { grid-template-columns: 1fr; }
-            .mode-selector { gap: 4px; padding: 4px 6px; }
-            .mode-btn { padding: 4px 10px; font-size: 0.6rem; }
-            .settings-row { padding: 6px 12px; }
+            .quick-grid { grid-template-columns: 1fr 1fr; }
+            .belajar-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .belajar-card { padding: 14px 10px; }
+            .belajar-card .belajar-icon { font-size: 1.8rem; }
+            .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; }
+            .mode-btn { padding: 8px 4px; font-size: 0.65rem; }
+            .mode-btn .icon { font-size: 1.2rem; }
+            .settings-row { padding: 8px 12px; gap: 8px; }
             .result-grid { grid-template-columns: 1fr 1fr; }
             .menu-sidebar { width: 260px; padding: 20px 14px; }
-            .btn-start { font-size: 0.85rem; padding: 10px 24px; max-width: 220px; }
+            .btn-start { font-size: 0.85rem; padding: 12px 24px; max-width: 220px; }
+            .lb-item { padding: 8px 10px; gap: 10px; }
+            .lb-item .rank { font-size: 1rem; width: 24px; }
+            .supported-box { flex-direction: column; text-align: center; padding: 14px; }
+            .supported-box .supported-icon { font-size: 2.2rem; }
+            .supported-box .supported-name { font-size: 1.1rem; }
+            .login-box { padding: 30px 24px; }
+            .user-badge { font-size: 0.65rem; padding: 4px 12px; }
+            .badge { font-size: 0.55rem; padding: 4px 12px; }
         }
 
         @media (max-width: 400px) {
             .q-text { font-size: 1.2rem; }
             .opt-btn { font-size: 0.75rem; padding: 8px 4px; }
             .result-item .value { font-size: 1.2rem; }
-            .container { padding: 12px 10px 16px; }
+            .container { padding: 10px 8px 14px; border-radius: 16px; margin: 4px; }
+            .home-title { font-size: 1.1rem; }
+            .quick-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+            .quick-btn { padding: 10px 6px; font-size: 0.7rem; }
+            .quick-btn .big { font-size: 1.3rem; }
+            .belajar-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+            .belajar-card { padding: 10px 6px; }
+            .belajar-card .belajar-icon { font-size: 1.4rem; }
+            .belajar-card .belajar-title { font-size: 0.75rem; }
+            .belajar-card .belajar-desc { font-size: 0.6rem; }
+            .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 3px; padding: 3px; }
+            .mode-btn { padding: 6px 2px; font-size: 0.55rem; }
+            .mode-btn .icon { font-size: 1rem; }
+            .settings-row { padding: 6px 8px; }
+            .time-input { width: 50px; padding: 4px 6px; font-size: 0.8rem; }
+            .btn-start { font-size: 0.75rem; padding: 10px 16px; max-width: 180px; }
+            .menu-btn { padding: 6px 12px; font-size: 0.7rem; }
+            .logo-text { font-size: 0.85rem; }
+            .logo-text .emoji-big { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+
+    <!-- Floating Math Symbols -->
+    <div class="math-float">∫</div>
+    <div class="math-float">π</div>
+    <div class="math-float">√</div>
+    <div class="math-float">∞</div>
+    <div class="math-float">∑</div>
+    <div class="math-float">≈</div>
+    <div class="math-float">∆</div>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>👋 Selamat Datang</h2>
+            <div class="sub">Masukkan namamu untuk mulai belajar!</div>
+            <input type="text" id="loginInput" placeholder="Masukkan namamu..." maxlength="20" autofocus>
+            <button class="login-btn" id="loginBtn">🚀 Mulai</button>
+            <div class="login-error" id="loginError">⚠️ Nama tidak boleh kosong!</div>
+        </div>
     </div>
 
-    <!-- ===== MENU OVERLAY ===== -->
+    <!-- ===== SIDEBAR ===== -->
     <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- ===== MENU SIDEBAR ===== -->
     <div class="menu-sidebar" id="menuSidebar">
         <button class="menu-close" id="menuClose">✕</button>
         <div class="menu-title">📚 <span class="highlight">Menu</span></div>
@@ -876,9 +1308,13 @@
         <button class="menu-item" data-page="quiz"><span class="emoji">🧮</span> Kerjakan Soal</button>
 
         <div class="menu-section-title">📖 Belajar</div>
+        <button class="menu-item" data-page="belajar"><span class="emoji">📚</span> Belajar Matematika</button>
         <button class="menu-item" data-page="apa-matematika"><span class="emoji">❓</span> Apa Itu Matematika?</button>
         <button class="menu-item" data-page="penemu-angka"><span class="emoji">🔢</span> Penemu Angka</button>
         <button class="menu-item" data-page="tokoh-matematika"><span class="emoji">👨‍🔬</span> Tokoh Matematika</button>
+
+        <div class="menu-section-title">🏆 Peringkat</div>
+        <button class="menu-item" data-page="leaderboard"><span class="emoji">🏆</span> Leaderboard</button>
 
         <div class="menu-section-title">ℹ️ Tentang</div>
         <button class="menu-item" data-page="tentang"><span class="emoji">📱</span> Tentang Web Ini</button>
@@ -887,33 +1323,54 @@
 
     <!-- ===== MAIN CONTAINER ===== -->
     <div class="container" id="app">
+
         <!-- Header -->
         <div class="header">
             <button class="menu-btn" id="menuToggle">☰ Menu</button>
-            <div class="logo-text">Math Quiz <span>Belajar Matematika</span></div>
-            <div class="badge">📚</div>
+            <div class="logo-text">
+                <span class="emoji-big">🧮</span> Math Quiz
+                <span>Belajar Matematika</span>
+            </div>
+            <div class="user-badge" id="userBadge" onclick="showLogin()">
+                👤 <span id="userNameDisplay">Login</span>
+            </div>
         </div>
 
         <!-- ===== PAGE: HOME ===== -->
         <div class="page active" id="page-home">
-            <div class="home-title">👋 Selamat Datang di <span class="highlight">Math Quiz</span></div>
+            <div class="home-title">👋 Selamat Datang di <span class="grad">Math Quiz</span></div>
             <div class="home-subtitle">✨ Belajar matematika jadi seru dan menyenangkan!</div>
             <div class="home-divider"></div>
+
+            <div class="einstein-quote">
+                <div class="quote-text">"Kegilaan adalah melakukan hal yang sama berulang kali dan mengharapkan hasil yang berbeda."</div>
+                <div class="quote-author">— Albert Einstein</div>
+            </div>
+
+            <div class="fact-box">
+                <div class="icon">💡</div>
+                <div class="content">
+                    <span class="title">Fakta Matematika</span>
+                    <p id="randomFact">Angka 0 pertama kali ditemukan di India pada abad ke-6 Masehi</p>
+                </div>
+            </div>
+
             <div class="page-content">
-                <p style="font-size:0.85rem;opacity:0.6;margin-bottom:8px;">Pilih menu di samping atau mulai cepat di bawah:</p>
                 <div class="quick-grid">
                     <button class="quick-btn" onclick="navigateTo('quiz')">
                         <span class="big">🧮</span> Kerjakan Soal
                         <span style="display:block;font-size:0.6rem;opacity:0.4;">100 soal acak</span>
                     </button>
+                    <button class="quick-btn" onclick="navigateTo('belajar')">
+                        <span class="big">📚</span> Belajar
+                        <span style="display:block;font-size:0.6rem;opacity:0.4;">Materi & Video</span>
+                    </button>
+                    <button class="quick-btn" onclick="navigateTo('leaderboard')">
+                        <span class="big">🏆</span> Leaderboard
+                        <span style="display:block;font-size:0.6rem;opacity:0.4;">Lihat peringkat</span>
+                    </button>
                     <button class="quick-btn" onclick="navigateTo('apa-matematika')">
                         <span class="big">❓</span> Apa Itu Matematika?
-                    </button>
-                    <button class="quick-btn" onclick="navigateTo('penemu-angka')">
-                        <span class="big">🔢</span> Penemu Angka
-                    </button>
-                    <button class="quick-btn" onclick="navigateTo('tokoh-matematika')">
-                        <span class="big">👨‍🔬</span> Tokoh Matematika
                     </button>
                 </div>
             </div>
@@ -921,22 +1378,44 @@
 
         <!-- ===== PAGE: QUIZ ===== -->
         <div class="page" id="page-quiz">
-            <div class="page-title">🧮 Kerjakan Soal</div>
+            <div class="page-title">🧮 Kerjakan <span class="grad">Soal</span></div>
             <div class="page-subtitle">Pilih jenis soal & waktu, lalu mulai!</div>
 
-            <!-- Mode selector -->
             <div class="mode-selector" id="modeSelector">
-                <button class="mode-btn active" data-mode="multiply" id="modeMultiply">✖️ Perkalian</button>
-                <button class="mode-btn" data-mode="divide" id="modeDivide">➗ Pembagian</button>
-                <button class="mode-btn" data-mode="add" id="modeAdd">➕ Penambahan</button>
-                <button class="mode-btn" data-mode="subtract" id="modeSubtract">➖ Pengurangan</button>
-                <button class="mode-btn" data-mode="percent" id="modePercent">% Persen</button>
-                <button class="mode-btn" data-mode="square" id="modeSquare">⬜ Kuadrat</button>
-                <button class="mode-btn" data-mode="power" id="modePower">🔢 Pangkat</button>
-                <button class="mode-btn" data-mode="exponent" id="modeExponent">📈 Eksponen</button>
+                <button class="mode-btn active" data-mode="multiply" id="modeMultiply">
+                    <span class="icon">✖️</span> Perkalian
+                    <span class="label">1-9</span>
+                </button>
+                <button class="mode-btn" data-mode="divide" id="modeDivide">
+                    <span class="icon">➗</span> Pembagian
+                    <span class="label">1-9</span>
+                </button>
+                <button class="mode-btn" data-mode="add" id="modeAdd">
+                    <span class="icon">➕</span> Penambahan
+                    <span class="label">+</span>
+                </button>
+                <button class="mode-btn" data-mode="subtract" id="modeSubtract">
+                    <span class="icon">➖</span> Pengurangan
+                    <span class="label">−</span>
+                </button>
+                <button class="mode-btn" data-mode="percent" id="modePercent">
+                    <span class="icon">%</span> Persen
+                    <span class="label">%</span>
+                </button>
+                <button class="mode-btn" data-mode="square" id="modeSquare">
+                    <span class="icon">⬜</span> Kuadrat
+                    <span class="label">²</span>
+                </button>
+                <button class="mode-btn" data-mode="power" id="modePower">
+                    <span class="icon">🔢</span> Pangkat
+                    <span class="label">^</span>
+                </button>
+                <button class="mode-btn" data-mode="exponent" id="modeExponent">
+                    <span class="icon">📈</span> Eksponen
+                    <span class="label">10^</span>
+                </button>
             </div>
 
-            <!-- Settings -->
             <div class="settings-row">
                 <span class="settings-label">⏱️ Waktu</span>
                 <div class="time-wrap">
@@ -946,12 +1425,10 @@
                 </div>
             </div>
 
-            <!-- Start -->
             <div class="start-area">
                 <button class="btn-start" id="startBtn">🚀 Mulai 100 Soal</button>
             </div>
 
-            <!-- Quiz Panel (muncul setelah start) -->
             <div class="quiz-panel" id="quizPanel">
                 <div class="quiz-nav">
                     <button class="btn-nav home-btn" id="goHomeBtn">🏠 Home</button>
@@ -968,7 +1445,6 @@
                 <div class="feedback-area" id="feedbackArea">💡 Pilih jawabanmu</div>
             </div>
 
-            <!-- Result Panel -->
             <div class="result-panel" id="resultPanel">
                 <div class="result-box">
                     <div class="result-title">🏁 Selesai!</div>
@@ -989,9 +1465,59 @@
             </div>
         </div>
 
+        <!-- ===== PAGE: BELAJAR ===== -->
+        <div class="page" id="page-belajar">
+            <div class="page-title">📚 Belajar <span class="grad">Matematika</span></div>
+            <div class="page-subtitle">Pilih materi yang ingin dipelajari</div>
+
+            <div class="belajar-grid">
+                <div class="belajar-card" onclick="openMateri('perkalian')">
+                    <div class="belajar-icon">✖️</div>
+                    <div class="belajar-title">Perkalian</div>
+                    <div class="belajar-desc">Belajar perkalian 1-9</div>
+                    <div class="belajar-tag">🎯 Dasar</div>
+                </div>
+                <div class="belajar-card" onclick="openMateri('pembagian')">
+                    <div class="belajar-icon">➗</div>
+                    <div class="belajar-title">Pembagian</div>
+                    <div class="belajar-desc">Belajar pembagian 1-9</div>
+                    <div class="belajar-tag">🎯 Dasar</div>
+                </div>
+                <div class="belajar-card" onclick="openMateri('penambahan')">
+                    <div class="belajar-icon">➕</div>
+                    <div class="belajar-title">Penambahan</div>
+                    <div class="belajar-desc">Belajar penambahan</div>
+                    <div class="belajar-tag">📈 Mudah</div>
+                </div>
+                <div class="belajar-card" onclick="openMateri('pengurangan')">
+                    <div class="belajar-icon">➖</div>
+                    <div class="belajar-title">Pengurangan</div>
+                    <div class="belajar-desc">Belajar pengurangan</div>
+                    <div class="belajar-tag">📈 Mudah</div>
+                </div>
+                <div class="belajar-card" onclick="openMateri('persen')">
+                    <div class="belajar-icon">%</div>
+                    <div class="belajar-title">Persen</div>
+                    <div class="belajar-desc">Belajar persentase</div>
+                    <div class="belajar-tag">⭐ Menengah</div>
+                </div>
+                <div class="belajar-card" onclick="openMateri('eksponen')">
+                    <div class="belajar-icon">📈</div>
+                    <div class="belajar-title">Eksponen</div>
+                    <div class="belajar-desc">Belajar eksponen</div>
+                    <div class="belajar-tag">⭐ Menengah</div>
+                </div>
+            </div>
+
+            <div class="materi-detail" id="materiDetail" style="display:none;">
+                <button class="materi-back" onclick="closeMateri()">← Kembali ke daftar</button>
+                <div id="materiContent"></div>
+            </div>
+        </div>
+
         <!-- ===== PAGE: APA ITU MATEMATIKA ===== -->
         <div class="page" id="page-apa-matematika">
-            <div class="page-title">❓ Apa Itu Matematika?</div>
+            <div class="page-title">❓ Apa Itu <span class="grad">Matematika</span>?</div>
             <div class="page-subtitle">Dasar dari semua ilmu pengetahuan</div>
             <div class="page-content">
                 <div class="highlight-box">
@@ -1012,7 +1538,7 @@
 
         <!-- ===== PAGE: PENEMU ANGKA ===== -->
         <div class="page" id="page-penemu-angka">
-            <div class="page-title">🔢 Penemu Angka</div>
+            <div class="page-title">🔢 Penemu <span class="grad">Angka</span></div>
             <div class="page-subtitle">Sejarah di balik angka yang kita gunakan</div>
             <div class="page-content">
                 <div class="highlight-box green">
@@ -1036,7 +1562,7 @@
 
         <!-- ===== PAGE: TOKOH MATEMATIKA ===== -->
         <div class="page" id="page-tokoh-matematika">
-            <div class="page-title">👨‍🔬 Tokoh Matematika</div>
+            <div class="page-title">👨‍🔬 Tokoh <span class="grad">Matematika</span></div>
             <div class="page-subtitle">Ilmuwan yang mengubah dunia</div>
             <div class="page-content">
                 <div class="math-card"><h4>📐 Euclid (300 SM)</h4><p>Bapak Geometri. Buku <em>"Elements"</em> jadi dasar geometri selama 2000 tahun.</p></div>
@@ -1048,9 +1574,25 @@
             </div>
         </div>
 
+        <!-- ===== PAGE: LEADERBOARD ===== -->
+        <div class="page" id="page-leaderboard">
+            <div class="page-title">🏆 <span class="grad">Leaderboard</span></div>
+            <div class="page-subtitle">Lihat peringkat para pejuang matematika!</div>
+
+            <div class="leaderboard-tabs">
+                <button class="lb-tab active" data-lb="best" id="lbBest">🌟 Terbaik</button>
+                <button class="lb-tab" data-lb="most" id="lbMost">🔥 Terrajin</button>
+                <button class="lb-tab" data-lb="time" id="lbTime">⏱️ Terlama</button>
+            </div>
+
+            <div class="lb-list" id="lbList">
+                <div class="lb-empty">Belum ada data. Ayo kerjakan soal!</div>
+            </div>
+        </div>
+
         <!-- ===== PAGE: TENTANG ===== -->
         <div class="page" id="page-tentang">
-            <div class="page-title">📱 Tentang Web Ini</div>
+            <div class="page-title">📱 Tentang <span class="grad">Web Ini</span></div>
             <div class="page-subtitle">Math Quiz — Belajar Matematika Jadi Seru</div>
             <div class="page-content">
                 <div class="highlight-box">
@@ -1063,6 +1605,7 @@
                     <p>• 📊 Hasil & review jawaban</p>
                     <p>• 📖 Materi tentang matematika</p>
                     <p>• 🏠 Menu navigasi mudah</p>
+                    <p>• 🏆 Leaderboard pemain terbaik</p>
                 </div>
                 <div class="highlight-box green">💡 <strong>Visi:</strong> Membuat matematika tidak lagi ditakuti, tetapi menjadi sesuatu yang menyenangkan.</div>
             </div>
@@ -1070,12 +1613,13 @@
 
         <!-- ===== PAGE: PEMBUAT ===== -->
         <div class="page" id="page-pembuat">
-            <div class="page-title">👤 Pembuat</div>
+            <div class="page-title">👤 <span class="grad">Pembuat</span></div>
             <div class="page-subtitle">Dibuat dengan ❤️ oleh pecinta matematika</div>
             <div class="page-content">
                 <div class="highlight-box">
                     <strong>Math Quiz</strong> dibuat oleh <strong>Rizky Wijaya</strong> — <em>Siswa Insan Tazzaka</em>
                 </div>
+
                 <div class="math-card">
                     <h4>📌 Tentang Pembuat</h4>
                     <p>• 🎯 Tujuan: Membantu teman-teman belajar matematika</p>
@@ -1083,23 +1627,96 @@
                     <p>• 🌐 Hosting: GitHub Pages</p>
                     <p>• 📅 Dirilis: 2026</p>
                 </div>
+
+                <!-- ===== SUPPORTED BY DEEPSEEK AI ===== -->
+                <div class="supported-box">
+                    <div class="supported-icon">🤖</div>
+                    <div class="supported-content">
+                        <div class="supported-label">✨ Supported by</div>
+                        <div class="supported-name">DeepSeek AI</div>
+                        <div class="supported-desc">Dibantu oleh kecerdasan buatan untuk membuat pengalaman belajar lebih baik</div>
+                    </div>
+                </div>
+
                 <div class="highlight-box gold">
                     💡 <strong>Pesan:</strong> "Matematika itu mudah. Yang dibutuhkan hanya cara belajar yang tepat dan semangat untuk terus mencoba!" — <strong>Rizky Wijaya</strong>
                 </div>
             </div>
         </div>
 
+        <!-- Footer -->
+        <div class="footer">
+            <span>Made with ❤️ by Rizky Wijaya</span>
+            <span>•</span>
+            <span>🤖 Supported by DeepSeek AI</span>
+        </div>
+
     </div>
 
     <script>
-        // ===== MENU =====
+        // ===== LOGIN SYSTEM =====
+        let currentUser = localStorage.getItem('mathQuizUser') || null;
+
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginInput = document.getElementById('loginInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const userNameDisplay = document.getElementById('userNameDisplay');
+
+        function showLogin() {
+            loginOverlay.classList.add('active');
+            loginInput.value = '';
+            loginError.style.display = 'none';
+            setTimeout(() => loginInput.focus(), 300);
+        }
+
+        function hideLogin() {
+            loginOverlay.classList.remove('active');
+        }
+
+        function handleLogin() {
+            const name = loginInput.value.trim();
+            if (!name) {
+                loginError.style.display = 'block';
+                return;
+            }
+            currentUser = name;
+            localStorage.setItem('mathQuizUser', name);
+            userNameDisplay.textContent = name;
+            hideLogin();
+            // Update leaderboard if user already has data
+            updateLeaderboard();
+        }
+
+        loginBtn.addEventListener('click', handleLogin);
+        loginInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleLogin();
+        });
+
+        // Auto login if user exists
+        if (currentUser) {
+            userNameDisplay.textContent = currentUser;
+        } else {
+            setTimeout(showLogin, 500);
+        }
+
+        // ===== MENU SYSTEM =====
         const menuToggle = document.getElementById('menuToggle');
         const menuSidebar = document.getElementById('menuSidebar');
         const menuOverlay = document.getElementById('menuOverlay');
         const menuClose = document.getElementById('menuClose');
 
-        function openMenu() { menuSidebar.classList.add('active'); menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeMenu() { menuSidebar.classList.remove('active'); menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        function openMenu() {
+            menuSidebar.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuSidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         menuToggle.addEventListener('click', openMenu);
         menuClose.addEventListener('click', closeMenu);
@@ -1110,9 +1727,11 @@
         const pages = {
             home: document.getElementById('page-home'),
             quiz: document.getElementById('page-quiz'),
+            belajar: document.getElementById('page-belajar'),
             'apa-matematika': document.getElementById('page-apa-matematika'),
             'penemu-angka': document.getElementById('page-penemu-angka'),
             'tokoh-matematika': document.getElementById('page-tokoh-matematika'),
+            leaderboard: document.getElementById('page-leaderboard'),
             tentang: document.getElementById('page-tentang'),
             pembuat: document.getElementById('page-pembuat')
         };
@@ -1126,11 +1745,223 @@
             });
             closeMenu();
             if (pageId === 'quiz') resetQuizState();
+            if (pageId === 'leaderboard') updateLeaderboard();
+            if (pageId === 'home') {
+                // Refresh random fact
+                const facts = [
+                    'Angka 0 pertama kali ditemukan di India pada abad ke-6 Masehi',
+                    'Pi (π) memiliki lebih dari 31 triliun digit desimal',
+                    'Ada 7 masalah matematika yang belum terpecahkan (Millennium Prize Problems)',
+                    'Matematika adalah bahasa universal yang digunakan di seluruh dunia',
+                    'Aljabar berasal dari kata Arab "al-jabr" yang berarti "penyatuan"',
+                    'Teorema Pythagoras sudah dikenal sejak 1900 SM di Babilonia'
+                ];
+                document.getElementById('randomFact').textContent = facts[Math.floor(Math.random() * facts.length)];
+            }
         }
 
         menuItems.forEach(item => {
             item.addEventListener('click', () => navigateTo(item.dataset.page));
         });
+
+        // ===== LEADERBOARD SYSTEM =====
+        function getLeaderboardData() {
+            const data = JSON.parse(localStorage.getItem('mathQuizLeaderboard') || '{}');
+            return data;
+        }
+
+        function saveLeaderboardData(data) {
+            localStorage.setItem('mathQuizLeaderboard', JSON.stringify(data));
+        }
+
+        function updateLeaderboard() {
+            const data = getLeaderboardData();
+            const list = document.getElementById('lbList');
+            const activeTab = document.querySelector('.lb-tab.active');
+            const type = activeTab ? activeTab.dataset.lb : 'best';
+
+            let sorted = [];
+            const entries = Object.entries(data);
+
+            if (entries.length === 0) {
+                list.innerHTML = '<div class="lb-empty">Belum ada data. Ayo kerjakan soal!</div>';
+                return;
+            }
+
+            if (type === 'best') {
+                sorted = entries.sort((a, b) => (b[1].bestScore || 0) - (a[1].bestScore || 0));
+            } else if (type === 'most') {
+                sorted = entries.sort((a, b) => (b[1].totalQuestions || 0) - (a[1].totalQuestions || 0));
+            } else if (type === 'time') {
+                sorted = entries.sort((a, b) => (b[1].totalTime || 0) - (a[1].totalTime || 0));
+            }
+
+            let html = '';
+            sorted.forEach(([name, stats], index) => {
+                let rankClass = '';
+                if (index === 0) rankClass = 'gold';
+                else if (index === 1) rankClass = 'silver';
+                else if (index === 2) rankClass = 'bronze';
+
+                let value = '';
+                let detail = '';
+                if (type === 'best') {
+                    value = stats.bestScore || 0;
+                    detail = `💯 ${value}% terbaik`;
+                } else if (type === 'most') {
+                    value = stats.totalQuestions || 0;
+                    detail = `📝 ${value} soal dikerjakan`;
+                } else if (type === 'time') {
+                    const minutes = Math.floor((stats.totalTime || 0) / 60);
+                    const seconds = Math.floor((stats.totalTime || 0) % 60);
+                    value = `${minutes}m ${seconds}s`;
+                    detail = `⏱️ total waktu belajar`;
+                }
+
+                let gradClass = '';
+                if (index === 0) gradClass = 'grad1';
+                else if (index === 1) gradClass = 'grad2';
+                else gradClass = 'grad3';
+
+                html += `
+                    <div class="lb-item">
+                        <div class="rank ${rankClass}">#${index + 1}</div>
+                        <div class="info">
+                            <div class="name">${name}</div>
+                            <div class="detail">${detail}</div>
+                        </div>
+                        <div class="value ${gradClass}">${value}</div>
+                    </div>
+                `;
+            });
+
+            list.innerHTML = html;
+        }
+
+        // Leaderboard tabs
+        document.querySelectorAll('.lb-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                updateLeaderboard();
+            });
+        });
+
+        // ===== SAVE QUIZ RESULT TO LEADERBOARD =====
+        function saveQuizResult(scorePercent, totalQuestionsDone) {
+            if (!currentUser) return;
+
+            const data = getLeaderboardData();
+            if (!data[currentUser]) {
+                data[currentUser] = {
+                    bestScore: 0,
+                    totalQuestions: 0,
+                    totalTime: 0,
+                    sessions: 0
+                };
+            }
+
+            // Update best score
+            if (scorePercent > data[currentUser].bestScore) {
+                data[currentUser].bestScore = scorePercent;
+            }
+
+            // Update total questions
+            data[currentUser].totalQuestions += totalQuestionsDone;
+
+            // Update total time (timeLimit is in seconds)
+            data[currentUser].totalTime += timeLimit;
+
+            // Update sessions
+            data[currentUser].sessions = (data[currentUser].sessions || 0) + 1;
+
+            saveLeaderboardData(data);
+        }
+
+        // ===== MATERI BELAJAR =====
+        const materiData = {
+            perkalian: {
+                title: '✖️ Perkalian',
+                desc: 'Perkalian adalah operasi matematika dasar yang digunakan untuk menghitung penjumlahan berulang.',
+                example: '7 × 8 = 56',
+                exampleDesc: 'Artinya: 8 + 8 + 8 + 8 + 8 + 8 + 8 = 56',
+                youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
+                youtubeTitle: 'Belajar Perkalian 1-9 (Video Animasi)'
+            },
+            pembagian: {
+                title: '➗ Pembagian',
+                desc: 'Pembagian adalah operasi matematika yang membagi suatu bilangan menjadi beberapa bagian yang sama.',
+                example: '56 ÷ 8 = 7',
+                exampleDesc: 'Artinya: 56 dibagi menjadi 8 bagian, setiap bagian bernilai 7',
+                youtube: 'https://www.youtube.com/watch?v=KGMf339LvgI',
+                youtubeTitle: 'Belajar Pembagian (Video Animasi)'
+            },
+            penambahan: {
+                title: '➕ Penambahan',
+                desc: 'Penambahan adalah operasi matematika untuk menggabungkan dua atau lebih bilangan.',
+                example: '25 + 17 = 42',
+                exampleDesc: 'Artinya: 25 ditambah 17 sama dengan 42',
+                youtube: 'https://www.youtube.com/watch?v=mY7KvJ3DqSA',
+                youtubeTitle: 'Belajar Penambahan (Video Animasi)'
+            },
+            pengurangan: {
+                title: '➖ Pengurangan',
+                desc: 'Pengurangan adalah operasi matematika untuk mengurangi nilai suatu bilangan.',
+                example: '42 − 17 = 25',
+                exampleDesc: 'Artinya: 42 dikurangi 17 sama dengan 25',
+                youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
+                youtubeTitle: 'Belajar Pengurangan (Video Animasi)'
+            },
+            persen: {
+                title: '% Persen',
+                desc: 'Persen adalah cara menyatakan pecahan dengan penyebut 100. Simbol % berarti "per seratus".',
+                example: '20% dari 50 = 10',
+                exampleDesc: 'Artinya: (20/100) × 50 = 10',
+                youtube: 'https://www.youtube.com/watch?v=2Yv6ZR8X8bY',
+                youtubeTitle: 'Belajar Persentase (Video Animasi)'
+            },
+            eksponen: {
+                title: '📈 Eksponen',
+                desc: 'Eksponen adalah operasi matematika yang menunjukkan perpangkatan suatu bilangan.',
+                example: '10² = 100',
+                exampleDesc: 'Artinya: 10 × 10 = 100 (10 pangkat 2)',
+                youtube: 'https://www.youtube.com/watch?v=O6I3LZ5N4eM',
+                youtubeTitle: 'Belajar Eksponen (Video Animasi)'
+            }
+        };
+
+        function openMateri(key) {
+            const data = materiData[key];
+            if (!data) return;
+
+            const detail = document.getElementById('materiDetail');
+            const content = document.getElementById('materiContent');
+
+            content.innerHTML = `
+                <h3>${data.title}</h3>
+                <div class="materi-desc">${data.desc}</div>
+                <div class="materi-example">
+                    <div class="example-title">💡 Contoh</div>
+                    <div class="example-content">${data.example}</div>
+                    <div style="color:rgba(255,255,255,0.3);font-size:0.8rem;margin-top:4px;">${data.exampleDesc}</div>
+                </div>
+                <div class="materi-youtube">
+                    <div class="yt-icon">▶️</div>
+                    <div class="yt-info">
+                        <div class="yt-label">📺 Video Pembelajaran</div>
+                        <div class="yt-title">${data.youtubeTitle}</div>
+                    </div>
+                    <a href="${data.youtube}" target="_blank" class="yt-btn">Tonton</a>
+                </div>
+            `;
+
+            detail.style.display = 'block';
+            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeMateri() {
+            document.getElementById('materiDetail').style.display = 'none';
+        }
 
         // ===== QUIZ LOGIC =====
         let mode = 'multiply';
@@ -1166,14 +1997,37 @@
         const modeSelector = document.getElementById('modeSelector');
 
         const modeMap = {
-            'multiply': { symbol: '×', gen: () => { let a = Math.floor(Math.random()*9)+1, b = Math.floor(Math.random()*9)+1; return { a, b, answer: a*b, display: `${a} × ${b}` }; } },
-            'divide': { symbol: '÷', gen: () => { let b = Math.floor(Math.random()*9)+1, q = Math.floor(Math.random()*9)+1, a = b*q; return { a, b, answer: q, display: `${a} ÷ ${b}` }; } },
-            'add': { symbol: '+', gen: () => { let a = Math.floor(Math.random()*20)+1, b = Math.floor(Math.random()*20)+1; return { a, b, answer: a+b, display: `${a} + ${b}` }; } },
-            'subtract': { symbol: '−', gen: () => { let a = Math.floor(Math.random()*20)+10, b = Math.floor(Math.random()*a)+1; return { a, b, answer: a-b, display: `${a} − ${b}` }; } },
-            'percent': { symbol: '%', gen: () => { let a = Math.floor(Math.random()*100)+1, b = Math.floor(Math.random()*100)+1; return { a, b, answer: Math.round((a*b)/100), display: `${a}% dari ${b}` }; } },
-            'square': { symbol: '²', gen: () => { let a = Math.floor(Math.random()*12)+1; return { a, b: null, answer: a*a, display: `${a}²` }; } },
-            'power': { symbol: '^', gen: () => { let a = Math.floor(Math.random()*5)+2, b = Math.floor(Math.random()*3)+2; return { a, b, answer: Math.pow(a,b), display: `${a}${'^'+b}` }; } },
-            'exponent': { symbol: 'e', gen: () => { let a = Math.floor(Math.random()*5)+1; return { a, b: null, answer: Math.pow(10,a), display: `10${'^'+a}` }; } }
+            'multiply': {
+                gen: () => { let a = Math.floor(Math.random() * 9) + 1,
+                        b = Math.floor(Math.random() * 9) + 1; return { answer: a * b, display: `${a} × ${b}` }; }
+            },
+            'divide': {
+                gen: () => { let b = Math.floor(Math.random() * 9) + 1,
+                        q = Math.floor(Math.random() * 9) + 1,
+                        a = b * q; return { answer: q, display: `${a} ÷ ${b}` }; }
+            },
+            'add': {
+                gen: () => { let a = Math.floor(Math.random() * 20) + 1,
+                        b = Math.floor(Math.random() * 20) + 1; return { answer: a + b, display: `${a} + ${b}` }; }
+            },
+            'subtract': {
+                gen: () => { let a = Math.floor(Math.random() * 20) + 10,
+                        b = Math.floor(Math.random() * a) + 1; return { answer: a - b, display: `${a} − ${b}` }; }
+            },
+            'percent': {
+                gen: () => { let a = Math.floor(Math.random() * 100) + 1,
+                        b = Math.floor(Math.random() * 100) + 1; return { answer: Math.round((a * b) / 100), display: `${a}% dari ${b}` }; }
+            },
+            'square': {
+                gen: () => { let a = Math.floor(Math.random() * 12) + 1; return { answer: a * a, display: `${a}²` }; }
+            },
+            'power': {
+                gen: () => { let a = Math.floor(Math.random() * 5) + 2,
+                        b = Math.floor(Math.random() * 3) + 2; return { answer: Math.pow(a, b), display: `${a}${'^' + b}` }; }
+            },
+            'exponent': {
+                gen: () => { let a = Math.floor(Math.random() * 5) + 1; return { answer: Math.pow(10, a), display: `10${'^' + a}` }; }
+            }
         };
 
         modeBtns.forEach(btn => {
@@ -1186,7 +2040,9 @@
             });
         });
 
-        function shuffleArray(arr) { for (let i = arr.length-1; i>0; i--) { const j = Math.floor(Math.random()*(i+1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+        function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i +
+                    1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
         function generateQuestions(m) {
             const qs = [];
@@ -1205,7 +2061,8 @@
                 while (optArr.length < 4) optArr.push(answer + optArr.length + 1);
                 optArr = shuffleArray(optArr).slice(0, 4);
                 let ci = optArr.indexOf(answer);
-                if (ci === -1) { optArr[0] = answer; ci = 0; }
+                if (ci === -1) { optArr[0] = answer;
+                    ci = 0; }
                 qs.push({ display, answer, options: optArr, correctIndex: ci, userAnswer: null });
             }
             return qs;
@@ -1257,11 +2114,12 @@
                 feedbackArea.className = 'feedback-area wrong';
             }
             isAnswered = true;
-            reviewData.push({ question: q.display, userAnswer: q.options[selectedIdx], correctAnswer: correctVal, status: isCorrect ? 'benar' : 'salah' });
+            reviewData.push({ question: q.display, userAnswer: q.options[selectedIdx], correctAnswer: correctVal,
+                status: isCorrect ? 'benar' : 'salah' });
             setTimeout(() => {
                 if (!isActive) return;
-                if (currentIndex < totalQuestions - 1) { currentIndex++; renderQuestion(currentIndex); }
-                else finishQuiz();
+                if (currentIndex < totalQuestions - 1) { currentIndex++;
+                    renderQuestion(currentIndex); } else finishQuiz();
             }, 500);
         }
 
@@ -1273,13 +2131,17 @@
                 timeLeft--;
                 updateTimerDisplay();
                 if (timeLeft <= 10) timerFill.classList.add('danger');
-                else if (timeLeft <= 30) { timerFill.classList.add('warning'); timerFill.classList.remove('danger'); }
-                if (timeLeft <= 0) { clearInterval(timerInterval); timerInterval = null; finishQuiz(); }
+                else if (timeLeft <= 30) { timerFill.classList.add('warning');
+                    timerFill.classList.remove('danger'); }
+                if (timeLeft <= 0) { clearInterval(timerInterval);
+                    timerInterval = null;
+                    finishQuiz(); }
             }, 1000);
         }
 
         function updateTimerDisplay() {
-            const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+            const m = Math.floor(timeLeft / 60),
+                s = timeLeft % 60;
             timerLabel.textContent = `${m}:${s.toString().padStart(2, '0')}`;
             timerFill.style.width = `${Math.max(0, Math.min(100, (timeLeft / timeLimit) * 100))}%`;
         }
@@ -1287,15 +2149,23 @@
         function finishQuiz() {
             if (!isActive) return;
             isActive = false;
-            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+            if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
             let emptyCount = 0;
             questions.forEach(q => {
                 if (q.userAnswer === null || q.userAnswer === undefined) {
                     emptyCount++;
-                    reviewData.push({ question: q.display, userAnswer: '-', correctAnswer: q.options[q.correctIndex], status: 'kosong' });
+                    reviewData.push({ question: q.display, userAnswer: '-', correctAnswer: q.options[q.correctIndex],
+                        status: 'kosong' });
                 }
             });
             score.empty = emptyCount;
+            const scorePercent = Math.round((score.correct / totalQuestions) * 100);
+            const totalDone = score.correct + score.wrong;
+
+            // Save to leaderboard
+            saveQuizResult(scorePercent, totalDone);
+
             quizPanel.classList.remove('active');
             quizPanel.style.display = 'none';
             resultPanel.classList.add('active');
@@ -1303,26 +2173,34 @@
             document.getElementById('resBenar').textContent = score.correct;
             document.getElementById('resSalah').textContent = score.wrong;
             document.getElementById('resKosong').textContent = score.empty;
-            document.getElementById('resPersen').textContent = Math.round((score.correct / totalQuestions) * 100) + '%';
+            document.getElementById('resPersen').textContent = scorePercent + '%';
+
             reviewContainer.innerHTML = '';
             reviewData.forEach((item, idx) => {
                 const div = document.createElement('div');
                 div.className = 'review-item';
                 let icon = item.status === 'benar' ? '✅' : item.status === 'salah' ? '❌' : '⬜';
                 let cls = item.status === 'benar' ? 'correct' : item.status === 'salah' ? 'wrong' : 'empty';
-                div.innerHTML = `<span>${idx+1}. ${item.question} = ?</span><span><span class="st">${icon}</span><span class="ans ${cls}">${item.userAnswer}</span> / ${item.correctAnswer}</span>`;
+                div.innerHTML =
+                    `<span>${idx+1}. ${item.question} = ?</span><span><span class="st">${icon}</span><span class="ans ${cls}">${item.userAnswer}</span> / ${item.correctAnswer}</span>`;
                 reviewContainer.appendChild(div);
             });
             reviewContainer.classList.add('hidden');
+
+            // Update leaderboard jika ada
+            updateLeaderboard();
         }
 
         function resetQuizState() {
-            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-            isActive = false; isAnswered = false;
+            if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            isActive = false;
+            isAnswered = false;
             timeLeft = timeLimit;
             timerFill.classList.remove('warning', 'danger');
             timerFill.style.width = '100%';
-            const m = Math.floor(timeLimit / 60), s = timeLimit % 60;
+            const m = Math.floor(timeLimit / 60),
+                s = timeLimit % 60;
             timerLabel.textContent = `${m}:${s.toString().padStart(2, '0')}`;
             score = { correct: 0, wrong: 0, empty: 0 };
             reviewData = [];
@@ -1337,15 +2215,15 @@
             quizPanel.style.display = 'none';
             resultPanel.classList.remove('active');
             resultPanel.style.display = 'none';
-            modeSelector.style.display = 'flex';
+            modeSelector.style.display = 'grid';
         }
 
         function startQuiz() {
             const val = parseFloat(customTimeInput.value);
             if (!isNaN(val) && val > 0) timeLimit = Math.round(val * 60);
-            else { timeLimit = 240; customTimeInput.value = '4'; }
+            else { timeLimit = 240;
+                customTimeInput.value = '4'; }
             resetQuizState();
-            // Sembunyikan mode selector setelah start
             modeSelector.style.display = 'none';
             questions = generateQuestions(mode);
             while (questions.length < 100) questions = questions.concat(generateQuestions(mode));
@@ -1358,7 +2236,8 @@
             timeLeft = timeLimit;
             timerFill.classList.remove('warning', 'danger');
             timerFill.style.width = '100%';
-            const m = Math.floor(timeLimit / 60), s = timeLimit % 60;
+            const m = Math.floor(timeLimit / 60),
+                s = timeLimit % 60;
             timerLabel.textContent = `${m}:${s.toString().padStart(2, '0')}`;
             startBtn.disabled = true;
             startBtn.textContent = '⏳ Sedang...';
@@ -1371,17 +2250,32 @@
         }
 
         startBtn.addEventListener('click', startQuiz);
-        goHomeBtn.addEventListener('click', () => { if (timerInterval) clearInterval(timerInterval); isActive = false; resetQuizState(); navigateTo('home'); });
-        restartQuizBtn.addEventListener('click', () => { if (timerInterval) clearInterval(timerInterval); isActive = false; startQuiz(); });
-        resultHomeBtn.addEventListener('click', () => { resetQuizState(); navigateTo('home'); });
-        resultRestartBtn.addEventListener('click', () => { resetQuizState(); startQuiz(); });
+        goHomeBtn.addEventListener('click', () => { if (timerInterval) clearInterval(timerInterval);
+            isActive = false;
+            resetQuizState();
+            navigateTo('home'); });
+        restartQuizBtn.addEventListener('click', () => { if (timerInterval) clearInterval(timerInterval);
+            isActive = false;
+            startQuiz(); });
+        resultHomeBtn.addEventListener('click', () => { resetQuizState();
+            navigateTo('home'); });
+        resultRestartBtn.addEventListener('click', () => { resetQuizState();
+            startQuiz(); });
         reviewToggle.addEventListener('click', function() {
             reviewContainer.classList.toggle('hidden');
             this.textContent = reviewContainer.classList.contains('hidden') ? '📋 Review' : '📋 Sembunyikan';
         });
 
+        // ===== INIT =====
         navigateTo('home');
         resetQuizState();
+
+        // Init leaderboard
+        updateLeaderboard();
+
+        console.log('🧮 Math Quiz Pro loaded!');
+        console.log('👤 Current user:', currentUser || 'Not logged in');
+        console.log('🤖 Supported by DeepSeek AI');
     </script>
 </body>
     </html>
