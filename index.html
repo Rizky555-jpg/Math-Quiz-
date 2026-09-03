@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Math Quiz Pro • Login</title>
+    <title>Math Quiz Pro</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;800;900&display=swap');
 
@@ -25,7 +25,6 @@
             overflow: hidden;
         }
 
-        /* Background efek */
         body::before {
             content: '';
             position: fixed;
@@ -33,7 +32,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 50%, rgba(100, 80, 255, 0.05) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 20%, rgba(255, 100, 150, 0.04) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 80%, rgba(0, 200, 255, 0.03) 0%, transparent 50%);
@@ -41,7 +40,6 @@
             pointer-events: none;
         }
 
-        /* Floating math symbols */
         .math-float {
             position: fixed;
             font-size: 2.5rem;
@@ -348,54 +346,6 @@
             color: rgba(255,255,255,0.15);
         }
 
-        .login-box .forgot-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .login-box .forgot-btn {
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.2);
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: underline;
-            padding: 4px 8px;
-            border-radius: 8px;
-        }
-
-        .login-box .forgot-btn:hover {
-            color: rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .login-box .hint-box {
-            background: rgba(108, 92, 231, 0.05);
-            border: 1px solid rgba(108, 92, 231, 0.05);
-            border-radius: 12px;
-            padding: 10px 14px;
-            margin-bottom: 14px;
-            display: none;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .login-box .hint-box.show {
-            display: block;
-            animation: fadePage 0.3s ease;
-        }
-
-        .login-box .hint-box .hint-text {
-            color: #a29bfe;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
         .login-btn {
             width: 100%;
             padding: 14px;
@@ -429,7 +379,7 @@
             display: none;
         }
 
-        /* ===== LOADING ===== */
+        /* ===== LOADING KEREN ===== */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -449,7 +399,24 @@
             display: flex;
         }
 
-        .loading-overlay .loader {
+        .loading-container {
+            text-align: center;
+            animation: fadePage 0.5s ease;
+        }
+
+        .loading-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            animation: bounceLoading 1.5s ease-in-out infinite;
+        }
+
+        @keyframes bounceLoading {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .loading-spinner {
             width: 60px;
             height: 60px;
             border: 4px solid rgba(255,255,255,0.05);
@@ -457,6 +424,7 @@
             border-right: 4px solid #a29bfe;
             border-radius: 50%;
             animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            margin: 0 auto 20px;
         }
 
         @keyframes spin {
@@ -464,25 +432,72 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading-overlay .loading-text {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            font-weight: 600;
+        .loading-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
-        .loading-overlay .loading-text .dots::after {
+        .loading-text .dots {
+            display: inline-block;
+            width: 30px;
+            text-align: left;
+        }
+
+        .loading-text .dots::after {
             content: '';
-            animation: dots 1.5s steps(4) infinite;
+            animation: dotsAnim 1.5s steps(4) infinite;
         }
 
-        @keyframes dots {
+        @keyframes dotsAnim {
             0% { content: ''; }
             25% { content: '.'; }
             50% { content: '..'; }
             75% { content: '...'; }
             100% { content: ''; }
+        }
+
+        .loading-quote {
+            color: rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            font-style: italic;
+            max-width: 400px;
+            margin: 8px auto 0;
+        }
+
+        .loading-quote .author {
+            display: block;
+            font-style: normal;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.08);
+            margin-top: 4px;
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin: 16px auto 0;
+            overflow: hidden;
+        }
+
+        .loading-progress .bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+            border-radius: 10px;
+            animation: progressBar 1.2s ease-in-out forwards;
+        }
+
+        @keyframes progressBar {
+            0% { width: 0%; }
+            30% { width: 25%; }
+            60% { width: 65%; }
+            85% { width: 85%; }
+            100% { width: 100%; }
         }
 
         /* ===== PAGES ===== */
@@ -1354,6 +1369,11 @@
             .login-box { padding: 30px 24px; }
             .user-badge { font-size: 0.65rem; padding: 4px 12px; }
             .badge { font-size: 0.55rem; padding: 4px 12px; }
+            .loading-icon { font-size: 3rem; }
+            .loading-spinner { width: 45px; height: 45px; }
+            .loading-text { font-size: 0.9rem; }
+            .loading-quote { font-size: 0.75rem; padding: 0 20px; }
+            .loading-progress { width: 150px; }
         }
 
         @media (max-width: 400px) {
@@ -1378,6 +1398,10 @@
             .menu-btn { padding: 6px 12px; font-size: 0.7rem; }
             .logo-text { font-size: 0.85rem; }
             .logo-text .emoji-big { font-size: 1.2rem; }
+            .loading-icon { font-size: 2.5rem; }
+            .loading-spinner { width: 35px; height: 35px; border-width: 3px; }
+            .loading-text { font-size: 0.8rem; }
+            .loading-progress { width: 120px; }
         }
     </style>
 </head>
@@ -1394,8 +1418,18 @@
 
     <!-- ===== LOADING ===== -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
-        <div class="loading-text">Memuat <span class="dots">...</span></div>
+        <div class="loading-container">
+            <div class="loading-icon">🧮</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Memuat <span class="dots"></span></div>
+            <div class="loading-quote">
+                "Matematika adalah musik dari akal."
+                <span class="author">— James Joseph Sylvester</span>
+            </div>
+            <div class="loading-progress">
+                <div class="bar"></div>
+            </div>
+        </div>
     </div>
 
     <!-- ===== LOGIN MODAL ===== -->
@@ -1403,22 +1437,10 @@
         <div class="login-box">
             <div class="welcome-icon">🧮</div>
             <h2>Selamat Datang</h2>
-            <div class="sub">Masuk untuk mulai belajar matematika!</div>
-            
-            <input type="text" id="loginUsername" placeholder="👤 Masukkan namamu..." maxlength="20">
-            <input type="password" id="loginPassword" placeholder="🔒 Masukkan password..." maxlength="20">
-            
-            <div class="forgot-row">
-                <div></div>
-                <button class="forgot-btn" id="forgotBtn">🔑 Lupa password?</button>
-            </div>
-            
-            <div class="hint-box" id="hintBox">
-                💡 Petunjuk: <span class="hint-text" id="hintText">s*****g</span>
-            </div>
-            
-            <button class="login-btn" id="loginBtn">🚀 Masuk</button>
-            <div class="login-error" id="loginError">⚠️ Username atau password salah!</div>
+            <div class="sub">Masukkan namamu untuk mulai belajar!</div>
+            <input type="text" id="loginUsername" placeholder="👤 Masukkan namamu..." maxlength="20" autofocus>
+            <button class="login-btn" id="loginBtn">🚀 Mulai</button>
+            <div class="login-error" id="loginError">⚠️ Nama tidak boleh kosong!</div>
         </div>
     </div>
 
@@ -1469,7 +1491,6 @@
             <div class="home-subtitle">✨ Belajar matematika jadi seru dan menyenangkan!</div>
             <div class="home-divider"></div>
 
-            <!-- Quote Tokoh Matematika -->
             <div class="quote-box">
                 <div class="quote-text">"Matematika bukanlah tentang angka, persamaan, atau algoritma. Matematika adalah tentang pemahaman."</div>
                 <div class="quote-author">— William Paul Thurston</div>
@@ -1781,37 +1802,10 @@
     </div>
 
     <script>
-        // ===== LOGIN SYSTEM =====
-        // Default user data (username: "rizky", password: "samsung")
-        const VALID_USERNAME = 'rizky';
-        const VALID_PASSWORD = 'samsung';
-        const PASSWORD_HINT = 's*****g';
-
-        let currentUser = localStorage.getItem('mathQuizUser') || null;
-
-        const loginOverlay = document.getElementById('loginOverlay');
-        const loginUsername = document.getElementById('loginUsername');
-        const loginPassword = document.getElementById('loginPassword');
-        const loginBtn = document.getElementById('loginBtn');
-        const loginError = document.getElementById('loginError');
-        const forgotBtn = document.getElementById('forgotBtn');
-        const hintBox = document.getElementById('hintBox');
-        const hintText = document.getElementById('hintText');
-        const userNameDisplay = document.getElementById('userNameDisplay');
+        // ============================================================
+        // LOADING
+        // ============================================================
         const loadingOverlay = document.getElementById('loadingOverlay');
-
-        function showLogin() {
-            loginOverlay.classList.add('active');
-            loginUsername.value = '';
-            loginPassword.value = '';
-            loginError.style.display = 'none';
-            hintBox.classList.remove('show');
-            setTimeout(() => loginUsername.focus(), 300);
-        }
-
-        function hideLogin() {
-            loginOverlay.classList.remove('active');
-        }
 
         function showLoading() {
             loadingOverlay.classList.add('active');
@@ -1821,64 +1815,70 @@
             loadingOverlay.classList.remove('active');
         }
 
-        function handleLogin() {
-            const username = loginUsername.value.trim().toLowerCase();
-            const password = loginPassword.value.trim();
+        // ============================================================
+        // LOGIN
+        // ============================================================
+        let currentUser = localStorage.getItem('mathQuizUser') || null;
 
-            if (!username || !password) {
-                loginError.textContent = '⚠️ Username dan password harus diisi!';
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginUsername = document.getElementById('loginUsername');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const userNameDisplay = document.getElementById('userNameDisplay');
+
+        function showLogin() {
+            loginOverlay.classList.add('active');
+            loginUsername.value = '';
+            loginError.style.display = 'none';
+            setTimeout(() => loginUsername.focus(), 300);
+        }
+
+        function hideLogin() {
+            loginOverlay.classList.remove('active');
+        }
+
+        function handleLogin() {
+            const username = loginUsername.value.trim();
+            if (!username) {
                 loginError.style.display = 'block';
                 return;
             }
 
-            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-                loginError.style.display = 'none';
-                loginBtn.disabled = true;
-                showLoading();
+            loginError.style.display = 'none';
+            loginBtn.disabled = true;
+            showLoading();
 
-                // Simulasi loading
-                setTimeout(() => {
-                    currentUser = username;
-                    localStorage.setItem('mathQuizUser', username);
-                    userNameDisplay.textContent = username;
-                    hideLoading();
-                    hideLogin();
-                    loginBtn.disabled = false;
-                    updateLeaderboard();
-                }, 1500);
-            } else {
-                loginError.textContent = '⚠️ Username atau password salah!';
-                loginError.style.display = 'block';
-                loginPassword.value = '';
-                loginPassword.focus();
-            }
+            setTimeout(() => {
+                currentUser = username;
+                localStorage.setItem('mathQuizUser', username);
+                userNameDisplay.textContent = username;
+                hideLoading();
+                hideLogin();
+                loginBtn.disabled = false;
+                updateLeaderboard();
+            }, 1200);
         }
-
-        // Forgot password
-        forgotBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            hintBox.classList.toggle('show');
-            if (hintBox.classList.contains('show')) {
-                hintText.textContent = PASSWORD_HINT;
-            }
-        });
 
         loginBtn.addEventListener('click', handleLogin);
-        loginPassword.addEventListener('keydown', (e) => {
+        loginUsername.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') handleLogin();
         });
-        loginUsername.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') loginPassword.focus();
-        });
 
-        // Auto login if user exists
+        // Auto login
         if (currentUser) {
             userNameDisplay.textContent = currentUser;
+            // Loading sebentar
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+            }, 800);
         } else {
-            setTimeout(showLogin, 500);
+            setTimeout(showLogin, 400);
         }
 
-        // ===== MENU SYSTEM =====
+        // ============================================================
+        // MENU
+        // ============================================================
         const menuToggle = document.getElementById('menuToggle');
         const menuSidebar = document.getElementById('menuSidebar');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -1900,7 +1900,9 @@
         menuClose.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', closeMenu);
 
-        // ===== NAVIGATION =====
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
         const menuItems = document.querySelectorAll('.menu-item');
         const pages = {
             home: document.getElementById('page-home'),
@@ -1941,10 +1943,11 @@
             item.addEventListener('click', () => navigateTo(item.dataset.page));
         });
 
-        // ===== LEADERBOARD SYSTEM =====
+        // ============================================================
+        // LEADERBOARD
+        // ============================================================
         function getLeaderboardData() {
-            const data = JSON.parse(localStorage.getItem('mathQuizLeaderboard') || '{}');
-            return data;
+            return JSON.parse(localStorage.getItem('mathQuizLeaderboard') || '{}');
         }
 
         function saveLeaderboardData(data) {
@@ -1957,49 +1960,31 @@
             const activeTab = document.querySelector('.lb-tab.active');
             const type = activeTab ? activeTab.dataset.lb : 'best';
 
-            let sorted = [];
             const entries = Object.entries(data);
-
             if (entries.length === 0) {
                 list.innerHTML = '<div class="lb-empty">Belum ada data. Ayo kerjakan soal!</div>';
                 return;
             }
 
-            if (type === 'best') {
-                sorted = entries.sort((a, b) => (b[1].bestScore || 0) - (a[1].bestScore || 0));
-            } else if (type === 'most') {
-                sorted = entries.sort((a, b) => (b[1].totalQuestions || 0) - (a[1].totalQuestions || 0));
-            } else if (type === 'time') {
-                sorted = entries.sort((a, b) => (b[1].totalTime || 0) - (a[1].totalTime || 0));
-            }
+            let sorted = [];
+            if (type === 'best') sorted = entries.sort((a, b) => (b[1].bestScore || 0) - (a[1].bestScore || 0));
+            else if (type === 'most') sorted = entries.sort((a, b) => (b[1].totalQuestions || 0) - (a[1].totalQuestions || 0));
+            else if (type === 'time') sorted = entries.sort((a, b) => (b[1].totalTime || 0) - (a[1].totalTime || 0));
 
             let html = '';
             sorted.forEach(([name, stats], index) => {
-                let rankClass = '';
-                if (index === 0) rankClass = 'gold';
-                else if (index === 1) rankClass = 'silver';
-                else if (index === 2) rankClass = 'bronze';
-
-                let value = '';
-                let detail = '';
-                if (type === 'best') {
-                    value = stats.bestScore || 0;
-                    detail = `💯 ${value}% terbaik`;
-                } else if (type === 'most') {
-                    value = stats.totalQuestions || 0;
-                    detail = `📝 ${value} soal dikerjakan`;
-                } else if (type === 'time') {
-                    const minutes = Math.floor((stats.totalTime || 0) / 60);
-                    const seconds = Math.floor((stats.totalTime || 0) % 60);
-                    value = `${minutes}m ${seconds}s`;
+                let rankClass = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : '';
+                let value = '',
+                    detail = '';
+                if (type === 'best') { value = stats.bestScore || 0;
+                    detail = `💯 ${value}% terbaik`; } else if (type === 'most') { value = stats.totalQuestions || 0;
+                    detail = `📝 ${value} soal dikerjakan`; } else if (type === 'time') {
+                    const m = Math.floor((stats.totalTime || 0) / 60),
+                        s = Math.floor((stats.totalTime || 0) % 60);
+                    value = `${m}m ${s}s`;
                     detail = `⏱️ total waktu belajar`;
                 }
-
-                let gradClass = '';
-                if (index === 0) gradClass = 'grad1';
-                else if (index === 1) gradClass = 'grad2';
-                else gradClass = 'grad3';
-
+                let gradClass = index === 0 ? 'grad1' : index === 1 ? 'grad2' : 'grad3';
                 html += `
                     <div class="lb-item">
                         <div class="rank ${rankClass}">#${index + 1}</div>
@@ -2011,7 +1996,6 @@
                     </div>
                 `;
             });
-
             list.innerHTML = html;
         }
 
@@ -2023,32 +2007,20 @@
             });
         });
 
-        // ===== SAVE QUIZ RESULT =====
-        function saveQuizResult(scorePercent, totalQuestionsDone) {
+        function saveQuizResult(scorePercent, totalDone) {
             if (!currentUser) return;
-
             const data = getLeaderboardData();
-            if (!data[currentUser]) {
-                data[currentUser] = {
-                    bestScore: 0,
-                    totalQuestions: 0,
-                    totalTime: 0,
-                    sessions: 0
-                };
-            }
-
-            if (scorePercent > data[currentUser].bestScore) {
-                data[currentUser].bestScore = scorePercent;
-            }
-
-            data[currentUser].totalQuestions += totalQuestionsDone;
+            if (!data[currentUser]) data[currentUser] = { bestScore: 0, totalQuestions: 0, totalTime: 0, sessions: 0 };
+            if (scorePercent > data[currentUser].bestScore) data[currentUser].bestScore = scorePercent;
+            data[currentUser].totalQuestions += totalDone;
             data[currentUser].totalTime += timeLimit;
             data[currentUser].sessions = (data[currentUser].sessions || 0) + 1;
-
             saveLeaderboardData(data);
         }
 
-        // ===== MATERI BELAJAR =====
+        // ============================================================
+        // MATERI BELAJAR
+        // ============================================================
         const materiData = {
             perkalian: {
                 title: '✖️ Perkalian',
@@ -2103,10 +2075,8 @@
         function openMateri(key) {
             const data = materiData[key];
             if (!data) return;
-
             const detail = document.getElementById('materiDetail');
             const content = document.getElementById('materiContent');
-
             content.innerHTML = `
                 <h3>${data.title}</h3>
                 <div class="materi-desc">${data.desc}</div>
@@ -2124,7 +2094,6 @@
                     <a href="${data.youtube}" target="_blank" class="yt-btn">Tonton</a>
                 </div>
             `;
-
             detail.style.display = 'block';
             detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -2133,7 +2102,9 @@
             document.getElementById('materiDetail').style.display = 'none';
         }
 
-        // ===== QUIZ LOGIC =====
+        // ============================================================
+        // QUIZ LOGIC
+        // ============================================================
         let mode = 'multiply';
         let questions = [];
         let currentIndex = 0;
@@ -2167,39 +2138,24 @@
         const modeSelector = document.getElementById('modeSelector');
 
         const modeMap = {
-            'multiply': {
-                gen: () => { let a = Math.floor(Math.random() * 9) + 1,
-                        b = Math.floor(Math.random() * 9) + 1; return { answer: a * b, display: `${a} × ${b}` }; }
-            },
-            'divide': {
-                gen: () => { let b = Math.floor(Math.random() * 9) + 1,
+            'multiply': { gen: () => { let a = Math.floor(Math.random() * 9) + 1,
+                        b = Math.floor(Math.random() * 9) + 1; return { answer: a * b, display: `${a} × ${b}` }; } },
+            'divide': { gen: () => { let b = Math.floor(Math.random() * 9) + 1,
                         q = Math.floor(Math.random() * 9) + 1,
-                        a = b * q; return { answer: q, display: `${a} ÷ ${b}` }; }
-            },
-            'add': {
-                gen: () => { let a = Math.floor(Math.random() * 20) + 1,
-                        b = Math.floor(Math.random() * 20) + 1; return { answer: a + b, display: `${a} + ${b}` }; }
-            },
-            'subtract': {
-                gen: () => { let a = Math.floor(Math.random() * 20) + 10,
-                        b = Math.floor(Math.random() * a) + 1; return { answer: a - b, display: `${a} − ${b}` }; }
-            },
-            'percent': {
-                gen: () => { let a = Math.floor(Math.random() * 100) + 1,
+                        a = b * q; return { answer: q, display: `${a} ÷ ${b}` }; } },
+            'add': { gen: () => { let a = Math.floor(Math.random() * 20) + 1,
+                        b = Math.floor(Math.random() * 20) + 1; return { answer: a + b, display: `${a} + ${b}` }; } },
+            'subtract': { gen: () => { let a = Math.floor(Math.random() * 20) + 10,
+                        b = Math.floor(Math.random() * a) + 1; return { answer: a - b, display: `${a} − ${b}` }; } },
+            'percent': { gen: () => { let a = Math.floor(Math.random() * 100) + 1,
                         b = Math.floor(Math.random() * 100) + 1; return { answer: Math.round((a * b) / 100),
-                        display: `${a}% dari ${b}` }; }
-            },
-            'square': {
-                gen: () => { let a = Math.floor(Math.random() * 12) + 1; return { answer: a * a, display: `${a}²` }; }
-            },
-            'power': {
-                gen: () => { let a = Math.floor(Math.random() * 5) + 2,
-                        b = Math.floor(Math.random() * 3) + 2; return { answer: Math.pow(a, b), display: `${a}${'^' + b}` }; }
-            },
-            'exponent': {
-                gen: () => { let a = Math.floor(Math.random() * 5) + 1; return { answer: Math.pow(10, a),
-                        display: `10${'^' + a}` }; }
-            }
+                        display: `${a}% dari ${b}` }; } },
+            'square': { gen: () => { let a = Math.floor(Math.random() * 12) + 1; return { answer: a * a,
+                        display: `${a}²` }; } },
+            'power': { gen: () => { let a = Math.floor(Math.random() * 5) + 2,
+                        b = Math.floor(Math.random() * 3) + 2; return { answer: Math.pow(a, b), display: `${a}${'^' + b}` }; } },
+            'exponent': { gen: () => { let a = Math.floor(Math.random() * 5) + 1; return { answer: Math.pow(10, a),
+                        display: `10${'^' + a}` }; } }
         };
 
         modeBtns.forEach(btn => {
@@ -2334,9 +2290,7 @@
             score.empty = emptyCount;
             const scorePercent = Math.round((score.correct / totalQuestions) * 100);
             const totalDone = score.correct + score.wrong;
-
             saveQuizResult(scorePercent, totalDone);
-
             quizPanel.classList.remove('active');
             quizPanel.style.display = 'none';
             resultPanel.classList.add('active');
@@ -2345,7 +2299,6 @@
             document.getElementById('resSalah').textContent = score.wrong;
             document.getElementById('resKosong').textContent = score.empty;
             document.getElementById('resPersen').textContent = scorePercent + '%';
-
             reviewContainer.innerHTML = '';
             reviewData.forEach((item, idx) => {
                 const div = document.createElement('div');
@@ -2435,7 +2388,9 @@
             this.textContent = reviewContainer.classList.contains('hidden') ? '📋 Review' : '📋 Sembunyikan';
         });
 
-        // ===== INIT =====
+        // ============================================================
+        // INIT
+        // ============================================================
         navigateTo('home');
         resetQuizState();
         updateLeaderboard();
@@ -2443,7 +2398,6 @@
         console.log('🧮 Math Quiz Pro loaded!');
         console.log('👤 Current user:', currentUser || 'Not logged in');
         console.log('🤖 Supported by DeepSeek AI');
-        console.log('🔑 Default login: rizky / samsung');
     </script>
 </body>
-                                                                                                        </html>
+                        </html>
