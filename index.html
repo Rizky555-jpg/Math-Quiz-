@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Math Quiz Pro • Full Version</title>
+    <title>Math Quiz Pro</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;800;900&display=swap');
 
@@ -611,6 +611,73 @@
         }
         .quick-btn .big { font-size: 1.8rem; display: block; margin-bottom: 2px; }
 
+        /* ===== TOKOH GRID ===== */
+        .tokoh-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 8px 0;
+        }
+
+        .tokoh-card {
+            background: rgba(255,255,255,0.01);
+            border-radius: 20px;
+            padding: 20px 14px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.02);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tokoh-card:hover {
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.04);
+        }
+        .tokoh-card .tokoh-icon { font-size: 2.8rem; display: block; margin-bottom: 6px; }
+        .tokoh-card .tokoh-name { color: white; font-weight: 800; font-size: 1.05rem; }
+        .tokoh-card .tokoh-role { color: rgba(255,255,255,0.2); font-size: 0.7rem; margin-top: 2px; }
+
+        /* ===== BIOGRAFI DETAIL ===== */
+        .biografi-detail {
+            background: rgba(255,255,255,0.01);
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin-top: 8px;
+            border: 1px solid rgba(255,255,255,0.02);
+            animation: fadePage 0.3s ease;
+        }
+        .biografi-back {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.02);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: rgba(255,255,255,0.3);
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+        .biografi-back:hover { background: rgba(255,255,255,0.04); color: white; }
+
+        .biografi-detail h3 {
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .biografi-detail .biografi-sub {
+            color: rgba(255,255,255,0.2);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        .biografi-detail .biografi-body {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .biografi-detail .biografi-body strong { color: white; }
+
         /* ===== QUIZ ===== */
         .mode-selector {
             display: grid;
@@ -1140,7 +1207,7 @@
             font-size: 0.85rem;
         }
 
-        /* ===== SPECIAL CONTENT (CARA CEPAT) ===== */
+        /* ===== SPECIAL CONTENT ===== */
         .special-math {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1154,18 +1221,8 @@
             padding: 14px 16px;
             border: 1px solid rgba(255,255,255,0.04);
         }
-
-        .special-item h4 {
-            color: #3498db;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-
-        .special-item p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
+        .special-item h4 { color: #3498db; font-size: 0.9rem; margin-bottom: 4px; }
+        .special-item p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.5; }
 
         /* ===== LEADERBOARD ===== */
         .leaderboard-tabs {
@@ -1345,6 +1402,7 @@
             .belajar-card { padding: 14px 10px; }
             .belajar-card .belajar-icon { font-size: 1.8rem; }
             .belajar-card.full { grid-column: span 2; }
+            .tokoh-grid { grid-template-columns: 1fr 1fr; }
             .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; }
             .mode-btn { padding: 8px 4px; font-size: 0.65rem; }
             .mode-btn .icon { font-size: 1.2rem; }
@@ -1383,6 +1441,7 @@
             .belajar-card .belajar-icon { font-size: 1.4rem; }
             .belajar-card .belajar-title { font-size: 0.75rem; }
             .belajar-card.full { grid-column: span 2; }
+            .tokoh-grid { grid-template-columns: 1fr 1fr; }
             .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 3px; padding: 3px; }
             .mode-btn { padding: 6px 2px; font-size: 0.55rem; }
             .mode-btn .icon { font-size: 1rem; }
@@ -1713,14 +1772,44 @@
         <!-- ===== TOKOH MATEMATIKA ===== -->
         <div class="page" id="page-tokoh-matematika">
             <div class="page-title">👨‍🔬 Tokoh <span class="grad">Matematika</span></div>
-            <div class="page-subtitle">Ilmuwan yang mengubah dunia</div>
-            <div class="page-content">
-                <div class="math-card"><h4>📐 Euclid (300 SM)</h4><p>Bapak Geometri. Buku <em>"Elements"</em> jadi dasar geometri selama 2000 tahun.</p></div>
-                <div class="math-card"><h4>🧮 Al-Khawarizmi (780-850 M)</h4><p>Bapak Aljabar. Kata "aljabar" dari namanya. Juga memperkenalkan angka 0.</p></div>
-                <div class="math-card"><h4>📊 Isaac Newton (1642-1727)</h4><p>Menemukan kalkulus dan hukum gravitasi.</p></div>
-                <div class="math-card"><h4>🧠 Albert Einstein (1879-1955)</h4><p>Teori relativitas. <em>E = mc²</em> mengubah dunia.</p></div>
-                <div class="math-card"><h4>💻 Alan Turing (1912-1954)</h4><p>Bapak ilmu komputer. Dasar dari AI dan komputasi modern.</p></div>
-                <div class="highlight-box gold">💡 Tanpa matematika, tidak ada smartphone, internet, atau teknologi modern!</div>
+            <div class="page-subtitle">Klik tokoh untuk melihat biografi lengkap</div>
+
+            <div class="tokoh-grid">
+                <div class="tokoh-card" onclick="openBiografi('euclid')">
+                    <span class="tokoh-icon">📐</span>
+                    <div class="tokoh-name">Euclid</div>
+                    <div class="tokoh-role">~300 SM • Bapak Geometri</div>
+                </div>
+                <div class="tokoh-card" onclick="openBiografi('alkhawarizmi')">
+                    <span class="tokoh-icon">🧮</span>
+                    <div class="tokoh-name">Al-Khawarizmi</div>
+                    <div class="tokoh-role">780-850 M • Bapak Aljabar</div>
+                </div>
+                <div class="tokoh-card" onclick="openBiografi('newton')">
+                    <span class="tokoh-icon">🍎</span>
+                    <div class="tokoh-name">Isaac Newton</div>
+                    <div class="tokoh-role">1642-1727 • Kalkulus & Gravitasi</div>
+                </div>
+                <div class="tokoh-card" onclick="openBiografi('einstein')">
+                    <span class="tokoh-icon">🧠</span>
+                    <div class="tokoh-name">Albert Einstein</div>
+                    <div class="tokoh-role">1879-1955 • Teori Relativitas</div>
+                </div>
+                <div class="tokoh-card" onclick="openBiografi('turing')">
+                    <span class="tokoh-icon">💻</span>
+                    <div class="tokoh-name">Alan Turing</div>
+                    <div class="tokoh-role">1912-1954 • Bapak Komputer</div>
+                </div>
+                <div class="tokoh-card" onclick="openBiografi('pythagoras')">
+                    <span class="tokoh-icon">📏</span>
+                    <div class="tokoh-name">Pythagoras</div>
+                    <div class="tokoh-role">~570-495 SM • Teorema Pythagoras</div>
+                </div>
+            </div>
+
+            <div class="biografi-detail" id="biografiDetail" style="display:none;">
+                <button class="biografi-back" onclick="closeBiografi()">← Kembali ke daftar</button>
+                <div id="biografiContent"></div>
             </div>
         </div>
 
@@ -1941,6 +2030,117 @@
         menuItems.forEach(item => {
             item.addEventListener('click', () => navigateTo(item.dataset.page));
         });
+
+        // ============================================================
+        // BIOGRAFI TOKOH
+        // ============================================================
+        const biografiData = {
+            euclid: {
+                name: 'Euclid',
+                icon: '📐',
+                role: 'Bapak Geometri',
+                era: '~325 SM - ~265 SM',
+                bio: `
+                    <strong>Lahir:</strong> ~325 SM, Yunani<br>
+                    <strong>Meninggal:</strong> ~265 SM, Mesir<br><br>
+                    Euclid adalah matematikawan Yunani yang dikenal sebagai "Bapak Geometri". Ia hidup di Alexandria, Mesir, pada masa pemerintahan Ptolemy I.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> Buku <em>"Elements"</em> (13 jilid) yang menjadi buku teks geometri paling berpengaruh selama lebih dari 2000 tahun.<br><br>
+                    <strong>💡 Kontribusi:</strong> Aksioma dan postulat geometri, Teorema Pythagoras (dibuktikan dengan cara baru), Algoritma Euclid untuk FPB.<br><br>
+                    <em style="opacity:0.4;">"Tidak ada jalan kerajaan menuju geometri." — Euclid</em>
+                `
+            },
+            alkhawarizmi: {
+                name: 'Al-Khawarizmi',
+                icon: '🧮',
+                role: 'Bapak Aljabar',
+                era: '780 M - 850 M',
+                bio: `
+                    <strong>Lahir:</strong> ~780 M, Khawarizm (Uzbekistan sekarang)<br>
+                    <strong>Meninggal:</strong> ~850 M, Baghdad<br><br>
+                    Al-Khawarizmi adalah ilmuwan Muslim dari Persia yang dikenal sebagai "Bapak Aljabar". Ia bekerja di Baitul Hikmah di Baghdad.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> Buku <em>"Al-Kitab al-Mukhtasar fi Hisab al-Jabr wal-Muqabala"</em> yang menjadi dasar aljabar modern.<br><br>
+                    <strong>💡 Kontribusi:</strong> Kata "aljabar" berasal dari judul bukunya, memperkenalkan angka 0 ke dunia Islam, sistem bilangan desimal.<br><br>
+                    <em style="opacity:0.4;">"Aljabar adalah seni menyatukan yang terpisah." — Al-Khawarizmi</em>
+                `
+            },
+            newton: {
+                name: 'Isaac Newton',
+                icon: '🍎',
+                role: 'Kalkulus & Gravitasi',
+                era: '1642 M - 1727 M',
+                bio: `
+                    <strong>Lahir:</strong> 4 Januari 1643, Inggris<br>
+                    <strong>Meninggal:</strong> 31 Maret 1727, Inggris<br><br>
+                    Isaac Newton adalah fisikawan dan matematikawan Inggris yang dianggap sebagai salah satu ilmuwan paling berpengaruh sepanjang masa.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> <em>"Philosophiæ Naturalis Principia Mathematica"</em> (1687) yang memuat hukum gravitasi universal dan tiga hukum gerak.<br><br>
+                    <strong>💡 Kontribusi:</strong> Kalkulus (bersama Leibniz), Hukum Gravitasi, Hukum Gerak Newton, Optik, Teleskop refleksi.<br><br>
+                    <em style="opacity:0.4;">"Jika saya terlihat lebih jauh, itu karena saya berdiri di atas pundak raksasa." — Isaac Newton</em>
+                `
+            },
+            einstein: {
+                name: 'Albert Einstein',
+                icon: '🧠',
+                role: 'Teori Relativitas',
+                era: '1879 M - 1955 M',
+                bio: `
+                    <strong>Lahir:</strong> 14 Maret 1879, Jerman<br>
+                    <strong>Meninggal:</strong> 18 April 1955, Amerika Serikat<br><br>
+                    Albert Einstein adalah fisikawan teoretis Jerman yang mengembangkan teori relativitas umum dan khusus.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> Teori Relativitas, Persamaan <em>E = mc²</em>, Efek Fotolistrik (Hadiah Nobel 1921).<br><br>
+                    <strong>💡 Kontribusi:</strong> Relativitas khusus (1905), Relativitas umum (1915), Gerak Brown, Efek fotolistrik, Bose-Einstein kondensat.<br><br>
+                    <em style="opacity:0.4;">"Imajinasi lebih penting daripada pengetahuan." — Albert Einstein</em>
+                `
+            },
+            turing: {
+                name: 'Alan Turing',
+                icon: '💻',
+                role: 'Bapak Komputer',
+                era: '1912 M - 1954 M',
+                bio: `
+                    <strong>Lahir:</strong> 23 Juni 1912, Inggris<br>
+                    <strong>Meninggal:</strong> 7 Juni 1954, Inggris<br><br>
+                    Alan Turing adalah matematikawan, ilmuwan komputer, dan kriptanalis Inggris. Ia dianggap sebagai bapak ilmu komputer dan kecerdasan buatan.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> Mesin Turing, konsep komputasi universal, memecahkan kode Enigma Jerman dalam Perang Dunia II.<br><br>
+                    <strong>💡 Kontribusi:</strong> Teori komputasi, Tes Turing untuk AI, Kriptanalisis, Biologi matematika (morfogenesis).<br><br>
+                    <em style="opacity:0.4;">"Kadang-kadang, orang yang paling tidak diharapkanlah yang melakukan hal-hal yang tidak terbayangkan." — Alan Turing</em>
+                `
+            },
+            pythagoras: {
+                name: 'Pythagoras',
+                icon: '📏',
+                role: 'Teorema Pythagoras',
+                era: '~570 SM - ~495 SM',
+                bio: `
+                    <strong>Lahir:</strong> ~570 SM, Samos, Yunani<br>
+                    <strong>Meninggal:</strong> ~495 SM, Metapontum, Italia<br><br>
+                    Pythagoras adalah filsuf dan matematikawan Yunani kuno yang dikenal melalui teorema geometri yang dinamai menurut namanya.<br><br>
+                    <strong>📚 Karya Terbesar:</strong> Teorema Pythagoras: <em>a² + b² = c²</em> untuk segitiga siku-siku.<br><br>
+                    <strong>💡 Kontribusi:</strong> Teorema Pythagoras, konsep bilangan irasional, dasar-dasar teori musik (harmoni), aliran Pythagorean.<br><br>
+                    <em style="opacity:0.4;">"Angka adalah esensi dari semua hal." — Pythagoras</em>
+                `
+            }
+        };
+
+        function openBiografi(key) {
+            const data = biografiData[key];
+            if (!data) return;
+
+            const detail = document.getElementById('biografiDetail');
+            const content = document.getElementById('biografiContent');
+
+            content.innerHTML = `
+                <h3>${data.icon} ${data.name}</h3>
+                <div class="biografi-sub">${data.role} • ${data.era}</div>
+                <div class="biografi-body">${data.bio}</div>
+            `;
+
+            detail.style.display = 'block';
+            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeBiografi() {
+            document.getElementById('biografiDetail').style.display = 'none';
+        }
 
         // ============================================================
         // LEADERBOARD
