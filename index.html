@@ -25,7 +25,6 @@
             overflow: hidden;
         }
 
-        /* Background efek */
         body::before {
             content: '';
             position: fixed;
@@ -41,7 +40,6 @@
             pointer-events: none;
         }
 
-        /* Floating math symbols */
         .math-float {
             position: fixed;
             font-size: 2.5rem;
@@ -89,7 +87,6 @@
             margin: 16px;
         }
 
-        /* ===== HEADER ===== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -112,7 +109,6 @@
             align-items: center;
             gap: 8px;
         }
-
         .menu-btn:hover {
             background: rgba(255,255,255,0.08);
             color: white;
@@ -124,12 +120,10 @@
             font-family: 'Fredoka One', cursive;
             font-weight: 400;
             font-size: 1.5rem;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
         .logo-text .emoji-big {
             font-size: 1.8rem;
             animation: bounceLogo 2s ease-in-out infinite;
@@ -163,7 +157,6 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .user-badge:hover {
             background: rgba(255,255,255,0.08);
             color: white;
@@ -187,7 +180,6 @@
             50% { box-shadow: 0 4px 45px rgba(52, 152, 219, 0.4); }
         }
 
-        /* ===== SIDEBAR ===== */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -274,7 +266,7 @@
         .menu-item.active { background: rgba(255,255,255,0.05); color: white; border-left: 3px solid #3498db; }
         .menu-item .emoji { font-size: 1.2rem; width: 28px; text-align: center; }
 
-        /* ===== LOGIN MODAL ===== */
+        /* ===== LOGIN ===== */
         .login-overlay {
             position: fixed;
             top: 0;
@@ -300,7 +292,6 @@
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: 0 30px 80px rgba(0,0,0,0.5);
             animation: fadePage 0.4s ease;
-            position: relative;
         }
 
         .login-box .welcome-icon {
@@ -338,12 +329,10 @@
             transition: all 0.3s;
             margin-bottom: 12px;
         }
-
         .login-box input:focus {
             border-color: rgba(52, 152, 219, 0.4);
             background: rgba(255,255,255,0.05);
         }
-
         .login-box input::placeholder {
             color: rgba(255,255,255,0.15);
         }
@@ -359,14 +348,11 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
-            position: relative;
         }
-
         .login-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(52, 152, 219, 0.3);
         }
-
         .login-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
@@ -396,15 +382,9 @@
             align-items: center;
             flex-direction: column;
         }
+        .loading-overlay.active { display: flex; }
 
-        .loading-overlay.active {
-            display: flex;
-        }
-
-        .loading-container {
-            text-align: center;
-            animation: fadePage 0.5s ease;
-        }
+        .loading-container { text-align: center; animation: fadePage 0.5s ease; }
 
         .loading-icon {
             font-size: 4rem;
@@ -441,13 +421,11 @@
             letter-spacing: 1px;
             margin-bottom: 4px;
         }
-
         .loading-text .dots {
             display: inline-block;
             width: 30px;
             text-align: left;
         }
-
         .loading-text .dots::after {
             content: '';
             animation: dotsAnim 1.5s steps(4) infinite;
@@ -468,7 +446,6 @@
             max-width: 400px;
             margin: 8px auto 0;
         }
-
         .loading-quote .author {
             display: block;
             font-style: normal;
@@ -485,7 +462,6 @@
             margin: 16px auto 0;
             overflow: hidden;
         }
-
         .loading-progress .bar {
             height: 100%;
             width: 0%;
@@ -635,7 +611,7 @@
         }
         .quick-btn .big { font-size: 1.8rem; display: block; margin-bottom: 2px; }
 
-        /* ===== MODE SELECTOR ===== */
+        /* ===== QUIZ ===== */
         .mode-selector {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -677,7 +653,6 @@
         }
         .mode-btn.active .label { opacity: 1; }
 
-        /* ===== SETTINGS ===== */
         .settings-row {
             display: flex;
             gap: 12px;
@@ -838,6 +813,7 @@
             background: linear-gradient(90deg, #e74c3c, #c0392b);
             animation: pulseTim 0.4s ease-in-out infinite alternate;
         }
+
         @keyframes pulseTim {
             0% { opacity: 1; }
             100% { opacity: 0.5; }
@@ -1042,7 +1018,7 @@
 
         .hidden { display: none !important; }
 
-        /* ===== BELAJAR GRID ===== */
+        /* ===== BELAJAR ===== */
         .belajar-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1077,7 +1053,6 @@
             color: #3498db;
         }
 
-        /* ===== MATERI DETAIL ===== */
         .materi-detail {
             background: rgba(255,255,255,0.01);
             border-radius: 20px;
@@ -1163,7 +1138,6 @@
             font-weight: 700;
             font-size: 0.75rem;
             cursor: pointer;
-            transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
         }
@@ -1402,7 +1376,6 @@
 </head>
 <body>
 
-    <!-- Floating Math Symbols -->
     <div class="math-float">∫</div>
     <div class="math-float">π</div>
     <div class="math-float">√</div>
@@ -1416,9 +1389,9 @@
         <div class="loading-container">
             <div class="loading-icon">🧮</div>
             <div class="loading-spinner"></div>
-            <div class="loading-text">Memuat <span class="dots"></span></div>
+            <div class="loading-text">Loading <span class="dots"></span></div>
             <div class="loading-quote">
-                "Matematika adalah musik dari akal."
+                "Mathematics is the music of reason."
                 <span class="author">— James Joseph Sylvester</span>
             </div>
             <div class="loading-progress">
@@ -1427,15 +1400,15 @@
         </div>
     </div>
 
-    <!-- ===== LOGIN MODAL ===== -->
+    <!-- ===== LOGIN ===== -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-box">
             <div class="welcome-icon">🧮</div>
-            <h2>Selamat Datang</h2>
-            <div class="sub">Masukkan namamu untuk mulai belajar!</div>
-            <input type="text" id="loginUsername" placeholder="👤 Masukkan namamu..." maxlength="20" autofocus>
-            <button class="login-btn" id="loginBtn">🚀 Mulai</button>
-            <div class="login-error" id="loginError">⚠️ Nama tidak boleh kosong!</div>
+            <h2>Welcome</h2>
+            <div class="sub">Enter your name to start learning!</div>
+            <input type="text" id="loginUsername" placeholder="👤 Enter your name..." maxlength="20" autofocus>
+            <button class="login-btn" id="loginBtn">🚀 Start</button>
+            <div class="login-error" id="loginError">⚠️ Name cannot be empty!</div>
         </div>
     </div>
 
@@ -1445,24 +1418,24 @@
         <button class="menu-close" id="menuClose">✕</button>
         <div class="menu-title">📚 <span class="highlight">Menu</span></div>
 
-        <div class="menu-section-title">🏠 Utama</div>
+        <div class="menu-section-title">🏠 Main</div>
         <button class="menu-item active" data-page="home"><span class="emoji">🏠</span> Home</button>
 
-        <div class="menu-section-title">📝 Latihan</div>
-        <button class="menu-item" data-page="quiz"><span class="emoji">🧮</span> Kerjakan Soal</button>
+        <div class="menu-section-title">📝 Practice</div>
+        <button class="menu-item" data-page="quiz"><span class="emoji">🧮</span> Take Quiz</button>
 
-        <div class="menu-section-title">📖 Belajar</div>
-        <button class="menu-item" data-page="belajar"><span class="emoji">📚</span> Belajar Matematika</button>
-        <button class="menu-item" data-page="apa-matematika"><span class="emoji">❓</span> Apa Itu Matematika?</button>
-        <button class="menu-item" data-page="penemu-angka"><span class="emoji">🔢</span> Penemu Angka</button>
-        <button class="menu-item" data-page="tokoh-matematika"><span class="emoji">👨‍🔬</span> Tokoh Matematika</button>
+        <div class="menu-section-title">📖 Learn</div>
+        <button class="menu-item" data-page="belajar"><span class="emoji">📚</span> Learn Math</button>
+        <button class="menu-item" data-page="apa-matematika"><span class="emoji">❓</span> What is Math?</button>
+        <button class="menu-item" data-page="penemu-angka"><span class="emoji">🔢</span> History of Numbers</button>
+        <button class="menu-item" data-page="tokoh-matematika"><span class="emoji">👨‍🔬</span> Math Figures</button>
 
-        <div class="menu-section-title">🏆 Peringkat</div>
+        <div class="menu-section-title">🏆 Rankings</div>
         <button class="menu-item" data-page="leaderboard"><span class="emoji">🏆</span> Leaderboard</button>
 
-        <div class="menu-section-title">ℹ️ Tentang</div>
-        <button class="menu-item" data-page="tentang"><span class="emoji">📱</span> Tentang Web Ini</button>
-        <button class="menu-item" data-page="pembuat"><span class="emoji">👤</span> Pembuat</button>
+        <div class="menu-section-title">ℹ️ About</div>
+        <button class="menu-item" data-page="tentang"><span class="emoji">📱</span> About This Web</button>
+        <button class="menu-item" data-page="pembuat"><span class="emoji">👤</span> Creator</button>
     </div>
 
     <!-- ===== MAIN CONTAINER ===== -->
@@ -1473,110 +1446,110 @@
             <button class="menu-btn" id="menuToggle">☰ Menu</button>
             <div class="logo-text">
                 <span class="emoji-big">🧮</span> Math Quiz
-                <span>Belajar Matematika</span>
+                <span>Learn Math</span>
             </div>
             <div class="user-badge" id="userBadge" onclick="showLogin()">
                 👤 <span id="userNameDisplay">Login</span>
             </div>
         </div>
 
-        <!-- ===== PAGE: HOME ===== -->
+        <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
-            <div class="home-title">👋 Selamat Datang di <span class="grad">Math Quiz</span></div>
-            <div class="home-subtitle">✨ Belajar matematika jadi seru dan menyenangkan!</div>
+            <div class="home-title">👋 Welcome to <span class="grad">Math Quiz</span></div>
+            <div class="home-subtitle">✨ Learning math is fun and easy!</div>
             <div class="home-divider"></div>
 
             <div class="quote-box">
-                <div class="quote-text">"Matematika bukanlah tentang angka, persamaan, atau algoritma. Matematika adalah tentang pemahaman."</div>
+                <div class="quote-text">"Mathematics is not about numbers, equations, or algorithms. It is about understanding."</div>
                 <div class="quote-author">— William Paul Thurston</div>
             </div>
 
             <div class="fact-box">
                 <div class="icon">💡</div>
                 <div class="content">
-                    <span class="title">Fakta Matematika</span>
-                    <p id="randomFact">Angka 0 pertama kali ditemukan di India pada abad ke-6 Masehi</p>
+                    <span class="title">Math Fact</span>
+                    <p id="randomFact">The number 0 was first discovered in India in the 6th century AD</p>
                 </div>
             </div>
 
             <div class="page-content">
                 <div class="quick-grid">
                     <button class="quick-btn" onclick="navigateTo('quiz')">
-                        <span class="big">🧮</span> Kerjakan Soal
-                        <span style="display:block;font-size:0.6rem;opacity:0.3;">100 soal acak</span>
+                        <span class="big">🧮</span> Take Quiz
+                        <span style="display:block;font-size:0.6rem;opacity:0.3;">100 random questions</span>
                     </button>
                     <button class="quick-btn" onclick="navigateTo('belajar')">
-                        <span class="big">📚</span> Belajar
-                        <span style="display:block;font-size:0.6rem;opacity:0.3;">Materi & Video</span>
+                        <span class="big">📚</span> Learn
+                        <span style="display:block;font-size:0.6rem;opacity:0.3;">Materials & Videos</span>
                     </button>
                     <button class="quick-btn" onclick="navigateTo('leaderboard')">
                         <span class="big">🏆</span> Leaderboard
-                        <span style="display:block;font-size:0.6rem;opacity:0.3;">Lihat peringkat</span>
+                        <span style="display:block;font-size:0.6rem;opacity:0.3;">See rankings</span>
                     </button>
                     <button class="quick-btn" onclick="navigateTo('apa-matematika')">
-                        <span class="big">❓</span> Apa Itu Matematika?
+                        <span class="big">❓</span> What is Math?
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- ===== PAGE: QUIZ ===== -->
+        <!-- ===== QUIZ ===== -->
         <div class="page" id="page-quiz">
-            <div class="page-title">🧮 Kerjakan <span class="grad">Soal</span></div>
-            <div class="page-subtitle">Pilih jenis soal & waktu, lalu mulai!</div>
+            <div class="page-title">🧮 Take <span class="grad">Quiz</span></div>
+            <div class="page-subtitle">Choose question type & time, then start!</div>
 
             <div class="mode-selector" id="modeSelector">
                 <button class="mode-btn active" data-mode="multiply" id="modeMultiply">
-                    <span class="icon">✖️</span> Perkalian
+                    <span class="icon">✖️</span> Multiply
                     <span class="label">1-9</span>
                 </button>
                 <button class="mode-btn" data-mode="divide" id="modeDivide">
-                    <span class="icon">➗</span> Pembagian
+                    <span class="icon">➗</span> Divide
                     <span class="label">1-9</span>
                 </button>
                 <button class="mode-btn" data-mode="add" id="modeAdd">
-                    <span class="icon">➕</span> Penambahan
+                    <span class="icon">➕</span> Addition
                     <span class="label">+</span>
                 </button>
                 <button class="mode-btn" data-mode="subtract" id="modeSubtract">
-                    <span class="icon">➖</span> Pengurangan
+                    <span class="icon">➖</span> Subtraction
                     <span class="label">−</span>
                 </button>
                 <button class="mode-btn" data-mode="percent" id="modePercent">
-                    <span class="icon">%</span> Persen
+                    <span class="icon">%</span> Percent
                     <span class="label">%</span>
                 </button>
                 <button class="mode-btn" data-mode="square" id="modeSquare">
-                    <span class="icon">⬜</span> Kuadrat
+                    <span class="icon">⬜</span> Square
                     <span class="label">²</span>
                 </button>
                 <button class="mode-btn" data-mode="power" id="modePower">
-                    <span class="icon">🔢</span> Pangkat
+                    <span class="icon">🔢</span> Power
                     <span class="label">^</span>
                 </button>
                 <button class="mode-btn" data-mode="exponent" id="modeExponent">
-                    <span class="icon">📈</span> Eksponen
+                    <span class="icon">📈</span> Exponent
                     <span class="label">10^</span>
                 </button>
             </div>
 
             <div class="settings-row">
-                <span class="settings-label">⏱️ Waktu</span>
+                <span class="settings-label">⏱️ Time</span>
                 <div class="time-wrap">
                     <label>🎯</label>
                     <input type="number" class="time-input" id="customTimeInput" placeholder="4" min="0.5" max="60" step="0.5" value="4">
-                    <span class="time-unit">menit</span>
+                    <span class="time-unit">min</span>
                 </div>
             </div>
 
             <div class="start-area">
-                <button class="btn-start" id="startBtn">🚀 Mulai 100 Soal</button>
+                <button class="btn-start" id="startBtn">🚀 Start 100 Questions</button>
             </div>
 
             <div class="quiz-panel" id="quizPanel">
                 <div class="quiz-nav">
                     <button class="btn-nav home-btn" id="goHomeBtn">🏠 Home</button>
-                    <button class="btn-nav restart-btn" id="restartQuizBtn">🔄 Ulang</button>
+                    <button class="btn-nav restart-btn" id="restartQuizBtn">🔄 Restart</button>
                 </div>
                 <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
                 <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
@@ -1584,192 +1557,192 @@
                     <span>📝 <span id="questionNum">1</span> / 100</span>
                     <span id="timerLabel">4:00</span>
                 </div>
-                <div class="q-text" id="questionText">7 × 8 = ?<span class="sub">✨ pilih jawaban</span></div>
+                <div class="q-text" id="questionText">7 × 8 = ?<span class="sub">✨ choose your answer</span></div>
                 <div class="options-grid" id="optionsContainer"></div>
-                <div class="feedback-area" id="feedbackArea">💡 Pilih jawabanmu</div>
+                <div class="feedback-area" id="feedbackArea">💡 Choose your answer</div>
             </div>
 
             <div class="result-panel" id="resultPanel">
                 <div class="result-box">
-                    <div class="result-title">🏁 Selesai!</div>
-                    <div class="result-sub">✨ Lihat hasil perjuanganmu</div>
+                    <div class="result-title">🏁 Finished!</div>
+                    <div class="result-sub">✨ Check your results</div>
                     <div class="result-grid">
-                        <div class="result-item"><span class="icon">✅</span><div class="label">Benar</div><div class="value green" id="resBenar">0</div></div>
-                        <div class="result-item"><span class="icon">❌</span><div class="label">Salah</div><div class="value red" id="resSalah">0</div></div>
-                        <div class="result-item"><span class="icon">⬜</span><div class="label">Kosong</div><div class="value gray" id="resKosong">0</div></div>
-                        <div class="result-item"><span class="icon">📊</span><div class="label">Skor</div><div class="value purple" id="resPersen">0%</div></div>
+                        <div class="result-item"><span class="icon">✅</span><div class="label">Correct</div><div class="value green" id="resBenar">0</div></div>
+                        <div class="result-item"><span class="icon">❌</span><div class="label">Wrong</div><div class="value red" id="resSalah">0</div></div>
+                        <div class="result-item"><span class="icon">⬜</span><div class="label">Empty</div><div class="value gray" id="resKosong">0</div></div>
+                        <div class="result-item"><span class="icon">📊</span><div class="label">Score</div><div class="value purple" id="resPersen">0%</div></div>
                     </div>
                     <div class="result-actions">
                         <button class="btn-sec" id="reviewToggle">📋 Review</button>
                         <button class="btn-sec" id="resultHomeBtn">🏠 Home</button>
-                        <button class="btn-pri" id="resultRestartBtn">🔄 Ulang</button>
+                        <button class="btn-pri" id="resultRestartBtn">🔄 Retry</button>
                     </div>
                     <div id="reviewContainer" class="review-section hidden"></div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== PAGE: BELAJAR ===== -->
+        <!-- ===== BELAJAR ===== -->
         <div class="page" id="page-belajar">
-            <div class="page-title">📚 Belajar <span class="grad">Matematika</span></div>
-            <div class="page-subtitle">Pilih materi yang ingin dipelajari</div>
+            <div class="page-title">📚 Learn <span class="grad">Math</span></div>
+            <div class="page-subtitle">Choose a topic to learn</div>
 
             <div class="belajar-grid">
                 <div class="belajar-card" onclick="openMateri('perkalian')">
                     <div class="belajar-icon">✖️</div>
-                    <div class="belajar-title">Perkalian</div>
-                    <div class="belajar-desc">Belajar perkalian 1-9</div>
-                    <div class="belajar-tag">🎯 Dasar</div>
+                    <div class="belajar-title">Multiplication</div>
+                    <div class="belajar-desc">Learn multiplication 1-9</div>
+                    <div class="belajar-tag">🎯 Basic</div>
                 </div>
                 <div class="belajar-card" onclick="openMateri('pembagian')">
                     <div class="belajar-icon">➗</div>
-                    <div class="belajar-title">Pembagian</div>
-                    <div class="belajar-desc">Belajar pembagian 1-9</div>
-                    <div class="belajar-tag">🎯 Dasar</div>
+                    <div class="belajar-title">Division</div>
+                    <div class="belajar-desc">Learn division 1-9</div>
+                    <div class="belajar-tag">🎯 Basic</div>
                 </div>
                 <div class="belajar-card" onclick="openMateri('penambahan')">
                     <div class="belajar-icon">➕</div>
-                    <div class="belajar-title">Penambahan</div>
-                    <div class="belajar-desc">Belajar penambahan</div>
-                    <div class="belajar-tag">📈 Mudah</div>
+                    <div class="belajar-title">Addition</div>
+                    <div class="belajar-desc">Learn addition</div>
+                    <div class="belajar-tag">📈 Easy</div>
                 </div>
                 <div class="belajar-card" onclick="openMateri('pengurangan')">
                     <div class="belajar-icon">➖</div>
-                    <div class="belajar-title">Pengurangan</div>
-                    <div class="belajar-desc">Belajar pengurangan</div>
-                    <div class="belajar-tag">📈 Mudah</div>
+                    <div class="belajar-title">Subtraction</div>
+                    <div class="belajar-desc">Learn subtraction</div>
+                    <div class="belajar-tag">📈 Easy</div>
                 </div>
                 <div class="belajar-card" onclick="openMateri('persen')">
                     <div class="belajar-icon">%</div>
-                    <div class="belajar-title">Persen</div>
-                    <div class="belajar-desc">Belajar persentase</div>
-                    <div class="belajar-tag">⭐ Menengah</div>
+                    <div class="belajar-title">Percent</div>
+                    <div class="belajar-desc">Learn percentages</div>
+                    <div class="belajar-tag">⭐ Medium</div>
                 </div>
                 <div class="belajar-card" onclick="openMateri('eksponen')">
                     <div class="belajar-icon">📈</div>
-                    <div class="belajar-title">Eksponen</div>
-                    <div class="belajar-desc">Belajar eksponen</div>
-                    <div class="belajar-tag">⭐ Menengah</div>
+                    <div class="belajar-title">Exponent</div>
+                    <div class="belajar-desc">Learn exponents</div>
+                    <div class="belajar-tag">⭐ Medium</div>
                 </div>
             </div>
 
             <div class="materi-detail" id="materiDetail" style="display:none;">
-                <button class="materi-back" onclick="closeMateri()">← Kembali ke daftar</button>
+                <button class="materi-back" onclick="closeMateri()">← Back to list</button>
                 <div id="materiContent"></div>
             </div>
         </div>
 
-        <!-- ===== PAGE: APA ITU MATEMATIKA ===== -->
+        <!-- ===== APA ITU MATEMATIKA ===== -->
         <div class="page" id="page-apa-matematika">
-            <div class="page-title">❓ Apa Itu <span class="grad">Matematika</span>?</div>
-            <div class="page-subtitle">Dasar dari semua ilmu pengetahuan</div>
+            <div class="page-title">❓ What is <span class="grad">Mathematics</span>?</div>
+            <div class="page-subtitle">The foundation of all sciences</div>
             <div class="page-content">
                 <div class="highlight-box">
-                    <strong>Matematika</strong> adalah ilmu tentang <strong>angka, struktur, ruang, dan perubahan</strong>. Digunakan di teknologi, ekonomi, seni, dan hampir semua bidang.
+                    <strong>Mathematics</strong> is the study of <strong>numbers, structure, space, and change</strong>. It is used in technology, economics, arts, and almost every field.
                 </div>
                 <div class="math-card">
-                    <h4>📐 Cabang-Cabang Matematika</h4>
-                    <p>• <strong>Aritmetika</strong> — operasi dasar (+, -, ×, ÷)</p>
-                    <p>• <strong>Aljabar</strong> — persamaan dan variabel</p>
-                    <p>• <strong>Geometri</strong> — bentuk dan ruang</p>
-                    <p>• <strong>Trigonometri</strong> — sudut dan segitiga</p>
-                    <p>• <strong>Kalkulus</strong> — perubahan dan gerak</p>
-                    <p>• <strong>Statistika</strong> — data dan probabilitas</p>
+                    <h4>📐 Branches of Mathematics</h4>
+                    <p>• <strong>Arithmetic</strong> — basic operations (+, -, ×, ÷)</p>
+                    <p>• <strong>Algebra</strong> — equations and variables</p>
+                    <p>• <strong>Geometry</strong> — shapes and space</p>
+                    <p>• <strong>Trigonometry</strong> — angles and triangles</p>
+                    <p>• <strong>Calculus</strong> — change and motion</p>
+                    <p>• <strong>Statistics</strong> — data and probability</p>
                 </div>
-                <div class="highlight-box gold">💡 Kata "matematika" berasal dari bahasa Yunani <em>"mathema"</em> = "apa yang dipelajari".</div>
+                <div class="highlight-box gold">💡 The word "mathematics" comes from the Greek <em>"mathema"</em> meaning "what is learned".</div>
             </div>
         </div>
 
-        <!-- ===== PAGE: PENEMU ANGKA ===== -->
+        <!-- ===== PENEMU ANGKA ===== -->
         <div class="page" id="page-penemu-angka">
-            <div class="page-title">🔢 Penemu <span class="grad">Angka</span></div>
-            <div class="page-subtitle">Sejarah di balik angka yang kita gunakan</div>
+            <div class="page-title">🔢 History of <span class="grad">Numbers</span></div>
+            <div class="page-subtitle">The story behind the numbers we use</div>
             <div class="page-content">
                 <div class="highlight-box green">
-                    <strong>Angka 0-9</strong> disebut <strong>Angka Arab</strong>, tetapi ditemukan oleh <strong>ilmuwan India</strong> pada abad ke-6 M.
+                    <strong>Numbers 0-9</strong> are called <strong>Arabic numerals</strong>, but they were actually discovered by <strong>Indian scientists</strong> in the 6th century AD.
                 </div>
                 <div class="math-card">
-                    <h4>📜 Sejarah Singkat</h4>
-                    <p>• <strong>500 M</strong> — Angka India (0-9) pertama kali muncul</p>
-                    <p>• <strong>700 M</strong> — Ilmuwan Arab mengenalkan ke dunia Islam</p>
-                    <p>• <strong>1200 M</strong> — Fibonacci membawa ke Eropa</p>
-                    <p>• <strong>Sekarang</strong> — Digunakan di seluruh dunia! 🌍</p>
+                    <h4>📜 Brief History</h4>
+                    <p>• <strong>500 AD</strong> — Indian numbers (0-9) first appeared</p>
+                    <p>• <strong>700 AD</strong> — Arab scholars introduced them to the Islamic world</p>
+                    <p>• <strong>1200 AD</strong> — Fibonacci brought them to Europe</p>
+                    <p>• <strong>Now</strong> — Used worldwide! 🌍</p>
                 </div>
                 <div class="math-card">
-                    <h4>👨‍🔬 Tokoh Penting</h4>
-                    <p>• <strong>Aryabhata</strong> (India) — menemukan konsep angka 0</p>
-                    <p>• <strong>Al-Khawarizmi</strong> (Persia) — bapak aljabar</p>
-                    <p>• <strong>Fibonacci</strong> (Italia) — memperkenalkan angka ke Eropa</p>
+                    <h4>👨‍🔬 Key Figures</h4>
+                    <p>• <strong>Aryabhata</strong> (India) — discovered the concept of zero</p>
+                    <p>• <strong>Al-Khawarizmi</strong> (Persia) — father of algebra</p>
+                    <p>• <strong>Fibonacci</strong> (Italy) — introduced numbers to Europe</p>
                 </div>
             </div>
         </div>
 
-        <!-- ===== PAGE: TOKOH MATEMATIKA ===== -->
+        <!-- ===== TOKOH MATEMATIKA ===== -->
         <div class="page" id="page-tokoh-matematika">
-            <div class="page-title">👨‍🔬 Tokoh <span class="grad">Matematika</span></div>
-            <div class="page-subtitle">Ilmuwan yang mengubah dunia</div>
+            <div class="page-title">👨‍🔬 Famous <span class="grad">Mathematicians</span></div>
+            <div class="page-subtitle">Scientists who changed the world</div>
             <div class="page-content">
-                <div class="math-card"><h4>📐 Euclid (300 SM)</h4><p>Bapak Geometri. Buku <em>"Elements"</em> jadi dasar geometri selama 2000 tahun.</p></div>
-                <div class="math-card"><h4>🧮 Al-Khawarizmi (780-850 M)</h4><p>Bapak Aljabar. Kata "aljabar" dari namanya. Juga memperkenalkan angka 0.</p></div>
-                <div class="math-card"><h4>📊 Isaac Newton (1642-1727)</h4><p>Menemukan kalkulus dan hukum gravitasi.</p></div>
-                <div class="math-card"><h4>🧠 Albert Einstein (1879-1955)</h4><p>Teori relativitas. <em>E = mc²</em> mengubah dunia.</p></div>
-                <div class="math-card"><h4>💻 Alan Turing (1912-1954)</h4><p>Bapak ilmu komputer. Dasar dari AI dan komputasi modern.</p></div>
-                <div class="highlight-box gold">💡 Tanpa matematika, tidak ada smartphone, internet, atau teknologi modern!</div>
+                <div class="math-card"><h4>📐 Euclid (300 BC)</h4><p>Father of Geometry. His book <em>"Elements"</em> was used for 2000 years.</p></div>
+                <div class="math-card"><h4>🧮 Al-Khawarizmi (780-850 AD)</h4><p>Father of Algebra. The word "algebra" comes from his name. Also introduced zero.</p></div>
+                <div class="math-card"><h4>📊 Isaac Newton (1642-1727)</h4><p>Discovered calculus and the law of gravity.</p></div>
+                <div class="math-card"><h4>🧠 Albert Einstein (1879-1955)</h4><p>Theory of relativity. <em>E = mc²</em> changed the world.</p></div>
+                <div class="math-card"><h4>💻 Alan Turing (1912-1954)</h4><p>Father of computer science. Foundation of AI and modern computing.</p></div>
+                <div class="highlight-box gold">💡 Without mathematics, there would be no smartphones, internet, or modern technology!</div>
             </div>
         </div>
 
-        <!-- ===== PAGE: LEADERBOARD ===== -->
+        <!-- ===== LEADERBOARD ===== -->
         <div class="page" id="page-leaderboard">
             <div class="page-title">🏆 <span class="grad">Leaderboard</span></div>
-            <div class="page-subtitle">Lihat peringkat para pejuang matematika!</div>
+            <div class="page-subtitle">See the rankings of math warriors!</div>
 
             <div class="leaderboard-tabs">
-                <button class="lb-tab active" data-lb="best" id="lbBest">🌟 Terbaik</button>
-                <button class="lb-tab" data-lb="most" id="lbMost">🔥 Terrajin</button>
-                <button class="lb-tab" data-lb="time" id="lbTime">⏱️ Terlama</button>
+                <button class="lb-tab active" data-lb="best" id="lbBest">🌟 Best</button>
+                <button class="lb-tab" data-lb="most" id="lbMost">🔥 Most Active</button>
+                <button class="lb-tab" data-lb="time" id="lbTime">⏱️ Longest</button>
             </div>
 
             <div class="lb-list" id="lbList">
-                <div class="lb-empty">Belum ada data. Ayo kerjakan soal!</div>
+                <div class="lb-empty">No data yet. Start doing questions!</div>
             </div>
         </div>
 
-        <!-- ===== PAGE: TENTANG ===== -->
+        <!-- ===== TENTANG ===== -->
         <div class="page" id="page-tentang">
-            <div class="page-title">📱 Tentang <span class="grad">Web Ini</span></div>
-            <div class="page-subtitle">Math Quiz — Belajar Matematika Jadi Seru</div>
+            <div class="page-title">📱 About <span class="grad">This Web</span></div>
+            <div class="page-subtitle">Math Quiz — Learning Math is Fun</div>
             <div class="page-content">
                 <div class="highlight-box">
-                    <strong>Math Quiz</strong> adalah platform belajar matematika interaktif yang dibuat untuk membantu siswa memahami konsep dengan cara menyenangkan.
+                    <strong>Math Quiz</strong> is an interactive math learning platform created to help students understand concepts in a fun way.
                 </div>
                 <div class="math-card">
-                    <h4>✨ Fitur-Fitur</h4>
-                    <p>• 🧮 100 soal acak setiap sesi</p>
-                    <p>• ⏱️ Timer bisa diatur sendiri</p>
-                    <p>• 📊 Hasil & review jawaban</p>
-                    <p>• 📖 Materi tentang matematika</p>
-                    <p>• 🏠 Menu navigasi mudah</p>
-                    <p>• 🏆 Leaderboard pemain terbaik</p>
+                    <h4>✨ Features</h4>
+                    <p>• 🧮 100 random questions per session</p>
+                    <p>• ⏱️ Customizable timer</p>
+                    <p>• 📊 Results & answer review</p>
+                    <p>• 📖 Math learning materials</p>
+                    <p>• 🏠 Easy navigation menu</p>
+                    <p>• 🏆 Leaderboard for best players</p>
                 </div>
-                <div class="highlight-box green">💡 <strong>Visi:</strong> Membuat matematika tidak lagi ditakuti, tetapi menjadi sesuatu yang menyenangkan.</div>
+                <div class="highlight-box green">💡 <strong>Vision:</strong> Making math no longer feared, but something fun to learn.</div>
             </div>
         </div>
 
-        <!-- ===== PAGE: PEMBUAT ===== -->
+        <!-- ===== PEMBUAT ===== -->
         <div class="page" id="page-pembuat">
-            <div class="page-title">👤 <span class="grad">Pembuat</span></div>
-            <div class="page-subtitle">Dibuat dengan ❤️ oleh pecinta matematika</div>
+            <div class="page-title">👤 <span class="grad">Creator</span></div>
+            <div class="page-subtitle">Made with ❤️ by a math lover</div>
             <div class="page-content">
                 <div class="highlight-box">
-                    <strong>Math Quiz</strong> dibuat oleh <strong>Rizky Wijaya</strong> — <em>Siswa Insan Tazzaka</em>
+                    <strong>Math Quiz</strong> was created by <strong>Rizky Wijaya</strong> — <em>Student of Insan Tazzaka</em>
                 </div>
 
                 <div class="math-card">
-                    <h4>📌 Tentang Pembuat</h4>
-                    <p>• 🎯 Tujuan: Membantu teman-teman belajar matematika</p>
-                    <p>• 💻 Teknologi: HTML, CSS, JavaScript</p>
+                    <h4>📌 About the Creator</h4>
+                    <p>• 🎯 Goal: Helping friends learn math</p>
+                    <p>• 💻 Technology: HTML, CSS, JavaScript</p>
                     <p>• 🌐 Hosting: GitHub Pages</p>
-                    <p>• 📅 Dirilis: 2026</p>
+                    <p>• 📅 Released: 2026</p>
                 </div>
 
                 <div class="supported-box">
@@ -1777,12 +1750,12 @@
                     <div class="supported-content">
                         <div class="supported-label">✨ Supported by</div>
                         <div class="supported-name">DeepSeek AI</div>
-                        <div class="supported-desc">Dibantu oleh kecerdasan buatan untuk membuat pengalaman belajar lebih baik</div>
+                        <div class="supported-desc">Powered by artificial intelligence to create a better learning experience</div>
                     </div>
                 </div>
 
                 <div class="highlight-box gold">
-                    💡 <strong>Pesan:</strong> "Matematika itu mudah. Yang dibutuhkan hanya cara belajar yang tepat dan semangat untuk terus mencoba!"
+                    💡 <strong>Message:</strong> "Mathematics is easy. All you need is the right way to learn and the spirit to keep trying!"
                 </div>
             </div>
         </div>
@@ -1922,12 +1895,12 @@
             if (pageId === 'leaderboard') updateLeaderboard();
             if (pageId === 'home') {
                 const facts = [
-                    'Angka 0 pertama kali ditemukan di India pada abad ke-6 Masehi',
-                    'Pi (π) memiliki lebih dari 31 triliun digit desimal',
-                    'Ada 7 masalah matematika yang belum terpecahkan (Millennium Prize Problems)',
-                    'Matematika adalah bahasa universal yang digunakan di seluruh dunia',
-                    'Aljabar berasal dari kata Arab "al-jabr" yang berarti "penyatuan"',
-                    'Teorema Pythagoras sudah dikenal sejak 1900 SM di Babilonia'
+                    'The number 0 was first discovered in India in the 6th century AD',
+                    'Pi (π) has over 31 trillion decimal digits',
+                    'There are 7 unsolved math problems (Millennium Prize Problems)',
+                    'Mathematics is the universal language used worldwide',
+                    'Algebra comes from the Arabic word "al-jabr" meaning "reunion"',
+                    'The Pythagorean theorem has been known since 1900 BC in Babylon'
                 ];
                 document.getElementById('randomFact').textContent = facts[Math.floor(Math.random() * facts.length)];
             }
@@ -1956,7 +1929,7 @@
 
             const entries = Object.entries(data);
             if (entries.length === 0) {
-                list.innerHTML = '<div class="lb-empty">Belum ada data. Ayo kerjakan soal!</div>';
+                list.innerHTML = '<div class="lb-empty">No data yet. Start doing questions!</div>';
                 return;
             }
 
@@ -1971,12 +1944,12 @@
                 let value = '',
                     detail = '';
                 if (type === 'best') { value = stats.bestScore || 0;
-                    detail = `💯 ${value}% terbaik`; } else if (type === 'most') { value = stats.totalQuestions || 0;
-                    detail = `📝 ${value} soal dikerjakan`; } else if (type === 'time') {
+                    detail = `💯 ${value}% best`; } else if (type === 'most') { value = stats.totalQuestions || 0;
+                    detail = `📝 ${value} questions done`; } else if (type === 'time') {
                     const m = Math.floor((stats.totalTime || 0) / 60),
                         s = Math.floor((stats.totalTime || 0) % 60);
                     value = `${m}m ${s}s`;
-                    detail = `⏱️ total waktu belajar`;
+                    detail = `⏱️ total study time`;
                 }
                 let gradClass = index === 0 ? 'grad1' : index === 1 ? 'grad2' : 'grad3';
                 html += `
@@ -2017,52 +1990,52 @@
         // ============================================================
         const materiData = {
             perkalian: {
-                title: '✖️ Perkalian',
-                desc: 'Perkalian adalah operasi matematika dasar yang digunakan untuk menghitung penjumlahan berulang.',
+                title: '✖️ Multiplication',
+                desc: 'Multiplication is a basic math operation used to calculate repeated addition.',
                 example: '7 × 8 = 56',
-                exampleDesc: 'Artinya: 8 + 8 + 8 + 8 + 8 + 8 + 8 = 56',
+                exampleDesc: 'Meaning: 8 + 8 + 8 + 8 + 8 + 8 + 8 = 56',
                 youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
-                youtubeTitle: 'Belajar Perkalian 1-9 (Video Animasi)'
+                youtubeTitle: 'Learn Multiplication 1-9 (Animated Video)'
             },
             pembagian: {
-                title: '➗ Pembagian',
-                desc: 'Pembagian adalah operasi matematika yang membagi suatu bilangan menjadi beberapa bagian yang sama.',
+                title: '➗ Division',
+                desc: 'Division is a math operation that splits a number into equal parts.',
                 example: '56 ÷ 8 = 7',
-                exampleDesc: 'Artinya: 56 dibagi menjadi 8 bagian, setiap bagian bernilai 7',
+                exampleDesc: 'Meaning: 56 divided into 8 parts, each part equals 7',
                 youtube: 'https://www.youtube.com/watch?v=KGMf339LvgI',
-                youtubeTitle: 'Belajar Pembagian (Video Animasi)'
+                youtubeTitle: 'Learn Division (Animated Video)'
             },
             penambahan: {
-                title: '➕ Penambahan',
-                desc: 'Penambahan adalah operasi matematika untuk menggabungkan dua atau lebih bilangan.',
+                title: '➕ Addition',
+                desc: 'Addition is a math operation to combine two or more numbers.',
                 example: '25 + 17 = 42',
-                exampleDesc: 'Artinya: 25 ditambah 17 sama dengan 42',
+                exampleDesc: 'Meaning: 25 plus 17 equals 42',
                 youtube: 'https://www.youtube.com/watch?v=mY7KvJ3DqSA',
-                youtubeTitle: 'Belajar Penambahan (Video Animasi)'
+                youtubeTitle: 'Learn Addition (Animated Video)'
             },
             pengurangan: {
-                title: '➖ Pengurangan',
-                desc: 'Pengurangan adalah operasi matematika untuk mengurangi nilai suatu bilangan.',
+                title: '➖ Subtraction',
+                desc: 'Subtraction is a math operation to reduce a number.',
                 example: '42 − 17 = 25',
-                exampleDesc: 'Artinya: 42 dikurangi 17 sama dengan 25',
+                exampleDesc: 'Meaning: 42 minus 17 equals 25',
                 youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
-                youtubeTitle: 'Belajar Pengurangan (Video Animasi)'
+                youtubeTitle: 'Learn Subtraction (Animated Video)'
             },
             persen: {
-                title: '% Persen',
-                desc: 'Persen adalah cara menyatakan pecahan dengan penyebut 100. Simbol % berarti "per seratus".',
-                example: '20% dari 50 = 10',
-                exampleDesc: 'Artinya: (20/100) × 50 = 10',
+                title: '% Percent',
+                desc: 'Percent is a way to express fractions with denominator 100. The % symbol means "per hundred".',
+                example: '20% of 50 = 10',
+                exampleDesc: 'Meaning: (20/100) × 50 = 10',
                 youtube: 'https://www.youtube.com/watch?v=2Yv6ZR8X8bY',
-                youtubeTitle: 'Belajar Persentase (Video Animasi)'
+                youtubeTitle: 'Learn Percentages (Animated Video)'
             },
             eksponen: {
-                title: '📈 Eksponen',
-                desc: 'Eksponen adalah operasi matematika yang menunjukkan perpangkatan suatu bilangan.',
+                title: '📈 Exponent',
+                desc: 'Exponent is a math operation that shows the power of a number.',
                 example: '10² = 100',
-                exampleDesc: 'Artinya: 10 × 10 = 100 (10 pangkat 2)',
+                exampleDesc: 'Meaning: 10 × 10 = 100 (10 to the power of 2)',
                 youtube: 'https://www.youtube.com/watch?v=O6I3LZ5N4eM',
-                youtubeTitle: 'Belajar Eksponen (Video Animasi)'
+                youtubeTitle: 'Learn Exponents (Animated Video)'
             }
         };
 
@@ -2075,17 +2048,17 @@
                 <h3>${data.title}</h3>
                 <div class="materi-desc">${data.desc}</div>
                 <div class="materi-example">
-                    <div class="example-title">💡 Contoh</div>
+                    <div class="example-title">💡 Example</div>
                     <div class="example-content">${data.example}</div>
                     <div style="color:rgba(255,255,255,0.2);font-size:0.8rem;margin-top:4px;">${data.exampleDesc}</div>
                 </div>
                 <div class="materi-youtube">
                     <div class="yt-icon">▶️</div>
                     <div class="yt-info">
-                        <div class="yt-label">📺 Video Pembelajaran</div>
+                        <div class="yt-label">📺 Learning Video</div>
                         <div class="yt-title">${data.youtubeTitle}</div>
                     </div>
-                    <a href="${data.youtube}" target="_blank" class="yt-btn">Tonton</a>
+                    <a href="${data.youtube}" target="_blank" class="yt-btn">Watch</a>
                 </div>
             `;
             detail.style.display = 'block';
@@ -2143,13 +2116,13 @@
                         b = Math.floor(Math.random() * a) + 1; return { answer: a - b, display: `${a} − ${b}` }; } },
             'percent': { gen: () => { let a = Math.floor(Math.random() * 100) + 1,
                         b = Math.floor(Math.random() * 100) + 1; return { answer: Math.round((a * b) / 100),
-                        display: `${a}% dari ${b}` }; } },
+                        display: `${a}% of ${b}` }; } },
             'square': { gen: () => { let a = Math.floor(Math.random() * 12) + 1; return { answer: a * a,
                         display: `${a}²` }; } },
             'power': { gen: () => { let a = Math.floor(Math.random() * 5) + 2,
-                        b = Math.floor(Math.random() * 3) + 2; return { answer: Math.pow(a, b), display: `${a}${'^' + b}` }; } },
+                        b = Math.floor(Math.random() * 3) + 2; return { answer: Math.pow(a, b), display: `${a}^${b}` }; } },
             'exponent': { gen: () => { let a = Math.floor(Math.random() * 5) + 1; return { answer: Math.pow(10, a),
-                        display: `10${'^' + a}` }; } }
+                        display: `10^${a}` }; } }
         };
 
         modeBtns.forEach(btn => {
@@ -2194,7 +2167,7 @@
             const q = questions[index];
             if (!q) return;
             questionNum.textContent = index + 1;
-            questionText.innerHTML = `${q.display} = ?<span class="sub">✨ pilih jawaban</span>`;
+            questionText.innerHTML = `${q.display} = ?<span class="sub">✨ choose your answer</span>`;
             optionsContainer.innerHTML = '';
             const labels = ['A', 'B', 'C', 'D'];
             q.options.forEach((opt, idx) => {
@@ -2205,7 +2178,7 @@
                 btn.addEventListener('click', () => handleClick(idx));
                 optionsContainer.appendChild(btn);
             });
-            feedbackArea.textContent = '💡 Pilih jawabanmu';
+            feedbackArea.textContent = '💡 Choose your answer';
             feedbackArea.className = 'feedback-area';
             isAnswered = false;
             q.userAnswer = null;
@@ -2228,16 +2201,16 @@
             });
             if (isCorrect) {
                 score.correct++;
-                feedbackArea.innerHTML = '✅ Benar! 🎉';
+                feedbackArea.innerHTML = '✅ Correct! 🎉';
                 feedbackArea.className = 'feedback-area correct';
             } else {
                 score.wrong++;
-                feedbackArea.innerHTML = `❌ Salah! Jawaban: ${correctVal}`;
+                feedbackArea.innerHTML = `❌ Wrong! Answer: ${correctVal}`;
                 feedbackArea.className = 'feedback-area wrong';
             }
             isAnswered = true;
             reviewData.push({ question: q.display, userAnswer: q.options[selectedIdx], correctAnswer: correctVal,
-                status: isCorrect ? 'benar' : 'salah' });
+                status: isCorrect ? 'correct' : 'wrong' });
             setTimeout(() => {
                 if (!isActive) return;
                 if (currentIndex < totalQuestions - 1) { currentIndex++;
@@ -2278,7 +2251,7 @@
                 if (q.userAnswer === null || q.userAnswer === undefined) {
                     emptyCount++;
                     reviewData.push({ question: q.display, userAnswer: '-', correctAnswer: q.options[q.correctIndex],
-                        status: 'kosong' });
+                        status: 'empty' });
                 }
             });
             score.empty = emptyCount;
@@ -2297,8 +2270,8 @@
             reviewData.forEach((item, idx) => {
                 const div = document.createElement('div');
                 div.className = 'review-item';
-                let icon = item.status === 'benar' ? '✅' : item.status === 'salah' ? '❌' : '⬜';
-                let cls = item.status === 'benar' ? 'correct' : item.status === 'salah' ? 'wrong' : 'empty';
+                let icon = item.status === 'correct' ? '✅' : item.status === 'wrong' ? '❌' : '⬜';
+                let cls = item.status === 'correct' ? 'correct' : item.status === 'wrong' ? 'wrong' : 'empty';
                 div.innerHTML =
                     `<span>${idx+1}. ${item.question} = ?</span><span><span class="st">${icon}</span><span class="ans ${cls}">${item.userAnswer}</span> / ${item.correctAnswer}</span>`;
                 reviewContainer.appendChild(div);
@@ -2322,11 +2295,11 @@
             reviewData = [];
             currentIndex = 0;
             optionsContainer.innerHTML = '';
-            feedbackArea.textContent = '💡 Pilih jawabanmu';
+            feedbackArea.textContent = '💡 Choose your answer';
             feedbackArea.className = 'feedback-area';
             progressFill.style.width = '0%';
             startBtn.disabled = false;
-            startBtn.textContent = '🚀 Mulai 100 Soal';
+            startBtn.textContent = '🚀 Start 100 Questions';
             quizPanel.classList.remove('active');
             quizPanel.style.display = 'none';
             resultPanel.classList.remove('active');
@@ -2356,7 +2329,7 @@
                 s = timeLimit % 60;
             timerLabel.textContent = `${m}:${s.toString().padStart(2, '0')}`;
             startBtn.disabled = true;
-            startBtn.textContent = '⏳ Sedang...';
+            startBtn.textContent = '⏳ Loading...';
             quizPanel.style.display = 'flex';
             quizPanel.classList.add('active');
             resultPanel.classList.remove('active');
@@ -2379,7 +2352,7 @@
             startQuiz(); });
         reviewToggle.addEventListener('click', function() {
             reviewContainer.classList.toggle('hidden');
-            this.textContent = reviewContainer.classList.contains('hidden') ? '📋 Review' : '📋 Sembunyikan';
+            this.textContent = reviewContainer.classList.contains('hidden') ? '📋 Review' : '📋 Hide';
         });
 
         // ============================================================
