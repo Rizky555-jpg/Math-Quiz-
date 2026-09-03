@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Math Quiz Pro • Indonesia</title>
+    <title>Math Quiz Pro • Full Version</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;800;900&display=swap');
 
@@ -1053,6 +1053,11 @@
             color: #3498db;
         }
 
+        .belajar-card.full {
+            grid-column: span 3;
+        }
+
+        /* ===== MATERI DETAIL ===== */
         .materi-detail {
             background: rgba(255,255,255,0.01);
             border-radius: 20px;
@@ -1106,18 +1111,23 @@
             margin-top: 2px;
         }
 
+        .materi-youtube iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
         .materi-youtube {
             margin-top: 12px;
             background: rgba(255,0,0,0.02);
             border-radius: 16px;
             padding: 12px 16px;
             border: 1px solid rgba(255,0,0,0.03);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
-        .materi-youtube .yt-icon { font-size: 2rem; }
-        .materi-youtube .yt-info { flex: 1; }
+        .materi-youtube .yt-icon { font-size: 2rem; display: inline-block; vertical-align: middle; }
+        .materi-youtube .yt-info { display: inline-block; margin-left: 12px; vertical-align: middle; }
         .materi-youtube .yt-info .yt-label {
             color: rgba(255,255,255,0.12);
             font-size: 0.6rem;
@@ -1129,21 +1139,32 @@
             font-weight: 600;
             font-size: 0.85rem;
         }
-        .materi-youtube .yt-btn {
-            background: #ff0000;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            color: white;
-            font-weight: 700;
-            font-size: 0.75rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+
+        /* ===== SPECIAL CONTENT (CARA CEPAT) ===== */
+        .special-math {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 8px 0;
         }
-        .materi-youtube .yt-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(255,0,0,0.2);
+
+        .special-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 14px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .special-item h4 {
+            color: #3498db;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .special-item p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         /* ===== LEADERBOARD ===== */
@@ -1323,6 +1344,7 @@
             .belajar-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
             .belajar-card { padding: 14px 10px; }
             .belajar-card .belajar-icon { font-size: 1.8rem; }
+            .belajar-card.full { grid-column: span 2; }
             .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; }
             .mode-btn { padding: 8px 4px; font-size: 0.65rem; }
             .mode-btn .icon { font-size: 1.2rem; }
@@ -1343,6 +1365,8 @@
             .loading-text { font-size: 0.9rem; }
             .loading-quote { font-size: 0.75rem; padding: 0 20px; }
             .loading-progress { width: 150px; }
+            .materi-youtube iframe { height: 160px; }
+            .special-math { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 400px) {
@@ -1358,6 +1382,7 @@
             .belajar-card { padding: 10px 6px; }
             .belajar-card .belajar-icon { font-size: 1.4rem; }
             .belajar-card .belajar-title { font-size: 0.75rem; }
+            .belajar-card.full { grid-column: span 2; }
             .mode-selector { grid-template-columns: repeat(4, 1fr); gap: 3px; padding: 3px; }
             .mode-btn { padding: 6px 2px; font-size: 0.55rem; }
             .mode-btn .icon { font-size: 1rem; }
@@ -1371,6 +1396,8 @@
             .loading-spinner { width: 35px; height: 35px; border-width: 3px; }
             .loading-text { font-size: 0.8rem; }
             .loading-progress { width: 120px; }
+            .materi-youtube iframe { height: 120px; }
+            .special-math { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1624,6 +1651,12 @@
                     <div class="belajar-desc">Belajar eksponen</div>
                     <div class="belajar-tag">⭐ Menengah</div>
                 </div>
+                <div class="belajar-card full" onclick="openMateri('cepat')">
+                    <div class="belajar-icon">⚡</div>
+                    <div class="belajar-title">Cara Cepat Berhitung</div>
+                    <div class="belajar-desc">Tips & trik hitung cepat perkalian, pembagian, penambahan, pengurangan</div>
+                    <div class="belajar-tag">🔥 Wajib Tahu!</div>
+                </div>
             </div>
 
             <div class="materi-detail" id="materiDetail" style="display:none;">
@@ -1832,7 +1865,6 @@
             if (e.key === 'Enter') handleLogin();
         });
 
-        // Auto login
         if (currentUser) {
             userNameDisplay.textContent = currentUser;
             showLoading();
@@ -1994,7 +2026,7 @@
                 desc: 'Perkalian adalah operasi matematika dasar yang digunakan untuk menghitung penjumlahan berulang.',
                 example: '7 × 8 = 56',
                 exampleDesc: 'Artinya: 8 + 8 + 8 + 8 + 8 + 8 + 8 = 56',
-                youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
+                youtube: 'https://www.youtube.com/embed/4N6F-Ok8M8I',
                 youtubeTitle: 'Belajar Perkalian 1-9 (Video Animasi)'
             },
             pembagian: {
@@ -2002,7 +2034,7 @@
                 desc: 'Pembagian adalah operasi matematika yang membagi suatu bilangan menjadi beberapa bagian yang sama.',
                 example: '56 ÷ 8 = 7',
                 exampleDesc: 'Artinya: 56 dibagi menjadi 8 bagian, setiap bagian bernilai 7',
-                youtube: 'https://www.youtube.com/watch?v=KGMf339LvgI',
+                youtube: 'https://www.youtube.com/embed/KGMf339LvgI',
                 youtubeTitle: 'Belajar Pembagian (Video Animasi)'
             },
             penambahan: {
@@ -2010,7 +2042,7 @@
                 desc: 'Penambahan adalah operasi matematika untuk menggabungkan dua atau lebih bilangan.',
                 example: '25 + 17 = 42',
                 exampleDesc: 'Artinya: 25 ditambah 17 sama dengan 42',
-                youtube: 'https://www.youtube.com/watch?v=mY7KvJ3DqSA',
+                youtube: 'https://www.youtube.com/embed/mY7KvJ3DqSA',
                 youtubeTitle: 'Belajar Penambahan (Video Animasi)'
             },
             pengurangan: {
@@ -2018,7 +2050,7 @@
                 desc: 'Pengurangan adalah operasi matematika untuk mengurangi nilai suatu bilangan.',
                 example: '42 − 17 = 25',
                 exampleDesc: 'Artinya: 42 dikurangi 17 sama dengan 25',
-                youtube: 'https://www.youtube.com/watch?v=4N6F-Ok8M8I',
+                youtube: 'https://www.youtube.com/embed/4N6F-Ok8M8I',
                 youtubeTitle: 'Belajar Pengurangan (Video Animasi)'
             },
             persen: {
@@ -2026,7 +2058,7 @@
                 desc: 'Persen adalah cara menyatakan pecahan dengan penyebut 100. Simbol % berarti "per seratus".',
                 example: '20% dari 50 = 10',
                 exampleDesc: 'Artinya: (20/100) × 50 = 10',
-                youtube: 'https://www.youtube.com/watch?v=2Yv6ZR8X8bY',
+                youtube: 'https://www.youtube.com/embed/2Yv6ZR8X8bY',
                 youtubeTitle: 'Belajar Persentase (Video Animasi)'
             },
             eksponen: {
@@ -2034,8 +2066,49 @@
                 desc: 'Eksponen adalah operasi matematika yang menunjukkan perpangkatan suatu bilangan.',
                 example: '10² = 100',
                 exampleDesc: 'Artinya: 10 × 10 = 100 (10 pangkat 2)',
-                youtube: 'https://www.youtube.com/watch?v=O6I3LZ5N4eM',
+                youtube: 'https://www.youtube.com/embed/O6I3LZ5N4eM',
                 youtubeTitle: 'Belajar Eksponen (Video Animasi)'
+            },
+            cepat: {
+                title: '⚡ Cara Cepat Berhitung',
+                desc: 'Kumpulan tips & trik untuk menghitung lebih cepat tanpa kalkulator!',
+                example: '✨ 7 Trik Cepat Berhitung',
+                exampleDesc: '',
+                youtube: 'https://www.youtube.com/embed/5P3nJfX2V7E',
+                youtubeTitle: 'Cara Cepat Berhitung (Tips & Trik)',
+                isSpecial: true,
+                specialContent: `
+                    <div class="special-math">
+                        <div class="special-item">
+                            <h4>✖️ Perkalian Cepat (9 × n)</h4>
+                            <p>Untuk 9 × n, hasilnya adalah (n-1) dan (9-(n-1)). Contoh: 9 × 7 = (7-1)=6 dan (9-6)=3 → 63</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>✖️ Perkalian 11 (2 digit)</h4>
+                            <p>Untuk ab × 11 = a (a+b) b. Contoh: 23 × 11 = 2 (2+3=5) 3 = 253</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>➗ Pembagian Cepat (÷ 5)</h4>
+                            <p>Bagi dengan 5 = kali 2 lalu bagi 10. Contoh: 140 ÷ 5 = (140 × 2) ÷ 10 = 280 ÷ 10 = 28</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>➕ Penambahan Cepat</h4>
+                            <p>Jika menambahkan angka dengan 9, tambahkan 10 lalu kurangi 1. Contoh: 36 + 9 = (36 + 10) - 1 = 45</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>➖ Pengurangan Cepat</h4>
+                            <p>Jika mengurangi dengan 9, kurangi 10 lalu tambah 1. Contoh: 45 - 9 = (45 - 10) + 1 = 36</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>✖️ Perkalian 25</h4>
+                            <p>Kalikan dengan 100 lalu bagi 4. Contoh: 28 × 25 = 2800 ÷ 4 = 700</p>
+                        </div>
+                        <div class="special-item">
+                            <h4>🔢 Kuadrat 5 (5², 15², 25²...)</h4>
+                            <p>Untuk n5² = (n × (n+1)) diikuti 25. Contoh: 25² = 2 × (2+1) = 6 → 625</p>
+                        </div>
+                    </div>
+                `
             }
         };
 
@@ -2044,23 +2117,41 @@
             if (!data) return;
             const detail = document.getElementById('materiDetail');
             const content = document.getElementById('materiContent');
+
+            let youtubeEmbed = '';
+            if (data.youtube) {
+                youtubeEmbed = `
+                    <div class="materi-youtube">
+                        <div>
+                            <span class="yt-icon">▶️</span>
+                            <span class="yt-info">
+                                <span class="yt-label">📺 Video Pembelajaran</span>
+                                <span class="yt-title">${data.youtubeTitle || 'Video'}</span>
+                            </span>
+                        </div>
+                        <iframe src="${data.youtube}" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                `;
+            }
+
+            let specialHtml = '';
+            if (data.isSpecial && data.specialContent) {
+                specialHtml = data.specialContent;
+            }
+
             content.innerHTML = `
                 <h3>${data.title}</h3>
                 <div class="materi-desc">${data.desc}</div>
+                ${data.example ? `
                 <div class="materi-example">
                     <div class="example-title">💡 Contoh</div>
                     <div class="example-content">${data.example}</div>
-                    <div style="color:rgba(255,255,255,0.2);font-size:0.8rem;margin-top:4px;">${data.exampleDesc}</div>
-                </div>
-                <div class="materi-youtube">
-                    <div class="yt-icon">▶️</div>
-                    <div class="yt-info">
-                        <div class="yt-label">📺 Video Pembelajaran</div>
-                        <div class="yt-title">${data.youtubeTitle}</div>
-                    </div>
-                    <a href="${data.youtube}" target="_blank" class="yt-btn">Tonton</a>
-                </div>
+                    ${data.exampleDesc ? `<div style="color:rgba(255,255,255,0.2);font-size:0.8rem;margin-top:4px;">${data.exampleDesc}</div>` : ''}
+                </div>` : ''}
+                ${specialHtml}
+                ${youtubeEmbed}
             `;
+
             detail.style.display = 'block';
             detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
