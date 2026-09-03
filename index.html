@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Math Quiz Pro • Indonesia</title>
+    <title>Math Quiz Pro</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;800;900&display=swap');
 
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Background Bintang */
+        /* Stars Background */
         body::before {
             content: '';
             position: fixed;
@@ -269,75 +269,45 @@
             margin: 16px 0 22px;
             flex-wrap: wrap;
             background: rgba(0,0,0,0.2);
-            padding: 14px 20px;
+            padding: 14px 24px;
             border-radius: 40px;
             border: 1px solid rgba(255,255,255,0.04);
+            justify-content: center;
         }
 
         .settings-label {
             color: rgba(255,255,255,0.6);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-
-        .time-presets {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .time-preset {
-            padding: 6px 16px;
-            border: 2px solid rgba(255,255,255,0.08);
-            border-radius: 30px;
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-            font-weight: 700;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .time-preset:hover {
-            border-color: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.8);
-        }
-
-        .time-preset.active {
-            background: rgba(255,255,255,0.1);
-            border-color: #4facfe;
-            color: #4facfe;
         }
 
         .custom-time-wrapper {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-left: auto;
+            gap: 10px;
             background: rgba(255,255,255,0.05);
-            padding: 4px 12px 4px 16px;
+            padding: 4px 16px 4px 20px;
             border-radius: 40px;
             border: 1px solid rgba(255,255,255,0.06);
         }
 
         .custom-time-wrapper label {
             color: rgba(255,255,255,0.4);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            text-transform: uppercase;
         }
 
         .custom-time-input {
-            width: 70px;
-            padding: 6px 10px;
+            width: 80px;
+            padding: 8px 12px;
             border: none;
             border-radius: 20px;
             background: rgba(255,255,255,0.08);
             color: white;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             text-align: center;
             outline: none;
             transition: all 0.2s;
@@ -353,9 +323,19 @@
         }
 
         .custom-time-unit {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
             font-weight: 600;
+        }
+
+        /* Hilangkan tombol panah di input number */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
         }
 
         .start-area {
@@ -921,10 +901,6 @@
                 padding: 14px 16px;
             }
             .custom-time-wrapper {
-                margin-left: 0;
-                justify-content: center;
-            }
-            .time-presets {
                 justify-content: center;
             }
             .question-text {
@@ -992,18 +968,12 @@
             <button class="mode-btn" data-mode="divide" id="modeDivide">➗ Pembagian</button>
         </div>
 
-        <!-- Settings Row -->
+        <!-- Settings Row - HANYA CUSTOM INPUT -->
         <div class="settings-row">
             <span class="settings-label">⏱️ Waktu</span>
-            <div class="time-presets">
-                <button class="time-preset" data-time="60">1m</button>
-                <button class="time-preset active" data-time="240">4m</button>
-                <button class="time-preset" data-time="300">5m</button>
-                <button class="time-preset" data-time="600">10m</button>
-            </div>
             <div class="custom-time-wrapper">
                 <label>🎯</label>
-                <input type="number" class="custom-time-input" id="customTimeInput" placeholder="0" min="0.5" max="60" step="0.5">
+                <input type="number" class="custom-time-input" id="customTimeInput" placeholder="4" min="0.5" max="60" step="0.5" value="4">
                 <span class="custom-time-unit">menit</span>
             </div>
         </div>
@@ -1098,7 +1068,6 @@
             const resetBtn = document.getElementById('resetBtn');
             const reviewToggle = document.getElementById('reviewToggle');
             const reviewContainer = document.getElementById('reviewContainer');
-            const timePresets = document.querySelectorAll('.time-preset');
             const customTimeInput = document.getElementById('customTimeInput');
 
             function shuffleArray(arr) {
@@ -1360,6 +1329,15 @@
             }
 
             function startQuiz() {
+                // Ambil waktu dari input custom
+                const val = parseFloat(customTimeInput.value);
+                if (!isNaN(val) && val > 0) {
+                    timeLimit = Math.round(val * 60);
+                } else {
+                    timeLimit = 240; // default 4 menit
+                    customTimeInput.value = '4';
+                }
+
                 resetQuiz();
                 questions = generateQuestions(mode);
                 while (questions.length < 100) {
@@ -1388,43 +1366,7 @@
                 startTimer();
             }
 
-            // Time handler
-            function setTimeLimit(seconds) {
-                timeLimit = seconds;
-                timeLeft = seconds;
-                const mins = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                timerLabel.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-                resetQuiz();
-            }
-
-            timePresets.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    if (isActive) return;
-                    timePresets.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    const seconds = parseInt(this.dataset.time);
-                    setTimeLimit(seconds);
-                    customTimeInput.value = '';
-                });
-            });
-
-            customTimeInput.addEventListener('change', function() {
-                if (isActive) return;
-                const val = parseFloat(this.value);
-                if (!isNaN(val) && val > 0) {
-                    timePresets.forEach(b => b.classList.remove('active'));
-                    const seconds = Math.round(val * 60);
-                    setTimeLimit(seconds);
-                }
-            });
-
-            customTimeInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    this.blur();
-                }
-            });
-
+            // Mode buttons
             modeMultiplyBtn.addEventListener('click', function() {
                 if (isActive) return;
                 mode = 'multiply';
